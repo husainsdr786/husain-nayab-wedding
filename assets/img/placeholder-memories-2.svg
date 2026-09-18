@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450">
+ <defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+   <stop offset="0" stop-color="#f4e9d4"/><stop offset="1" stop-color="#dce7db"/>
+  </linearGradient>
+ </defs>
+ <rect width="600" height="450" fill="url(#bg)"/>
+ <rect x="14" y="14" width="572" height="422" fill="none" stroke="#a9823f" stroke-opacity=".35" stroke-width="1.5"/>
+ <g transform="translate(300,190)" fill="none" stroke="#a9823f" stroke-width="3" stroke-linejoin="round">
+  <path d="M-60-30h20l9-15a15 15 0 0 1 13-8h36a15 15 0 0 1 13 8l9 15h20a20 20 0 0 1 20 20v54a20 20 0 0 1-20 20h-120a20 20 0 0 1-20-20v-54a20 20 0 0 1 20-20Z"/>
+  <circle cx="0" cy="14" r="26"/>
+ </g>
+ <text x="300" y="300" font-family="Georgia,'Times New Roman',serif" font-style="italic" font-size="26" fill="#a9823f" text-anchor="middle" letter-spacing="1">Memories 2</text>
+</svg>
