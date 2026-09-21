@@ -123,7 +123,7 @@ p+p{margin-top:8px}
  .orb-a{width:240px;height:240px;top:8%;left:8%}
  .orb-b{width:300px;height:300px;bottom:6%;right:6%;animation-delay:-6s;animation-duration:16s}
  .orb-c{width:170px;height:170px;top:42%;left:38%;opacity:.28;animation-delay:-2.5s;animation-duration:9s}
- .visual-ring{position:absolute;top:50%;left:50%;width:440px;height:440px;max-width:70vw;max-height:70vw;border:2px dashed color-mix(in srgb, var(--accent) 75%, transparent);border-radius:50%;box-shadow:0 0 26px -4px color-mix(in srgb, var(--accent) 55%, transparent);transform:translate(-50%,-50%) scale(.82);opacity:.95;animation:ring-pulse-out 4s ease-out infinite;pointer-events:none}
+ .visual-ring{position:absolute;top:50%;left:50%;width:520px;height:520px;max-width:70vw;max-height:70vw;border:2px dashed color-mix(in srgb, var(--accent) 75%, transparent);border-radius:50%;box-shadow:0 0 26px -4px color-mix(in srgb, var(--accent) 55%, transparent);transform:translate(-50%,-50%) scale(1);opacity:.95;animation:ring-pulse-out 4s ease-out infinite;pointer-events:none}
  .visual-ring:before{content:'';position:absolute;inset:26px;border:2px solid color-mix(in srgb, var(--accent) 55%, transparent);border-radius:50%}
  .visual-sparkle{position:absolute;width:6px;height:6px;border-radius:50%;background:var(--accent);opacity:0;pointer-events:none;animation:sparkle-twinkle 5s ease-in-out infinite}
  .visual-sparkle:before,.visual-sparkle:after{content:'';position:absolute;top:50%;left:50%;background:inherit}
@@ -143,7 +143,7 @@ p+p{margin-top:8px}
  100%{background-position:35% 30%,65% 70%,0 0}
 }
 @keyframes orb-float{from{transform:translate(0,0) scale(1)}to{transform:translate(28px,-22px) scale(1.15)}}
-@keyframes ring-pulse-out{0%{transform:translate(-50%,-50%) scale(.82);opacity:.85}100%{transform:translate(-50%,-50%) scale(1.12);opacity:0}}
+@keyframes ring-pulse-out{0%{transform:translate(-50%,-50%) scale(1);opacity:.85}100%{transform:translate(-50%,-50%) scale(1.08);opacity:0}}
 @keyframes sparkle-twinkle{0%,100%{opacity:0;transform:scale(.5)}50%{opacity:1;transform:scale(1.3)}}
 @keyframes card-float{50%{transform:translateY(-10px)}}
 @keyframes card-glow{50%{box-shadow:var(--shadow),0 0 32px -6px color-mix(in srgb, var(--accent) 45%, transparent)}}
