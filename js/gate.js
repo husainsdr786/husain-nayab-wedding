@@ -327,3 +327,16 @@
     }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
     sections.forEach(function (section) { observer.observe(section); });
 })();
+
+// Reserve the actual navigation height for mobile corner ornaments.
+(function () {
+    var nav = document.querySelector('.site-nav');
+    if (!nav) return;
+    function updateFlowerClearance() {
+        var height = nav.getBoundingClientRect().height;
+        document.documentElement.style.setProperty('--mobile-nav-height', Math.ceil(height) + 'px');
+    }
+    updateFlowerClearance();
+    if ('ResizeObserver' in window) new ResizeObserver(updateFlowerClearance).observe(nav);
+    window.addEventListener('resize', updateFlowerClearance, { passive: true });
+})();

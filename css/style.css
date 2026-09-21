@@ -64,7 +64,7 @@ p+p{margin-top:8px}
 /* Opening gate */
 .opening-screen{position:fixed;inset:0;z-index:100;background:radial-gradient(circle at 50% 20%,var(--accent-soft),var(--paper) 62%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;padding:32px 24px;text-align:center;transition:opacity .8s ease,transform .8s ease;overflow-y:auto}
 .opening-title{font-size:clamp(30px,7vw,42px);color:var(--accent)}
-.opening-screen h1{font-size:clamp(34px,8vw,48px)}
+.opening-screen h1{font-size:clamp(38px,9vw,58px)}
 .opening-screen .pill{margin-top:8px;border-color:var(--accent);padding:14px 26px}
 .opening-screen .pill:focus-visible{outline:none}
 .opening-screen.is-opening{opacity:0;transform:translateY(-30px) scale(.98);pointer-events:none}
@@ -135,7 +135,7 @@ p+p{margin-top:8px}
  .s4{top:32%;left:12%;animation-delay:3.8s}
  .visual-card{position:relative;max-width:360px;padding:40px 32px;border-radius:var(--radius-lg);background:var(--paper);box-shadow:var(--shadow);border:1px solid var(--line);text-align:center;animation:card-float 6s ease-in-out infinite,card-glow 4s ease-in-out infinite;overflow:hidden}
  .visual-card:before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent-soft),var(--accent),var(--accent-soft),var(--accent));background-size:200% 100%;animation:bar-shimmer 3.5s linear infinite}
- .visual-card-names{position:relative;font-size:clamp(30px,3vw,40px);color:var(--accent)!important;margin-bottom:14px}
+ .visual-card-names{position:relative;font-size:clamp(36px,3.5vw,50px);color:var(--accent)!important;margin-bottom:14px}
  .visual-card-date{position:relative;font-size:15px;letter-spacing:.06em;color:var(--muted)}
 }
 @keyframes panel-glow{
@@ -166,7 +166,7 @@ p+p{margin-top:8px}
 .hero-content{position:relative;z-index:1;padding:48px 24px 20px;width:100%}
 .hero-content h2{margin-bottom:34px}
 .hero-content .photo-ring{margin-bottom:26px}
-.hero-content h1{font-size:clamp(36px,9vw,52px);margin-bottom:16px}
+.hero-content h1{font-size:clamp(40px,10vw,64px);margin-bottom:16px}
 .hero-date{font-size:18px;font-weight:500;margin-bottom:14px;color:var(--muted)}
 .hero-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:12px}
 .hero-actions .pill{padding:10px 18px;font-size:13px;min-height:38px}
@@ -189,7 +189,7 @@ p+p{margin-top:8px}
 }
 .person{position:relative;padding-top:20px;max-width:300px;margin:0 auto}
 .person-name{font-weight:700;font-size:clamp(32px,6vw,42px);margin:22px 0 12px}
-.person-role{font-size:15px;color:var(--accent);margin-bottom:6px;letter-spacing:.08em;text-transform:uppercase;font-weight:500}
+.person-role{font-size:11px;color:var(--accent);margin-bottom:6px;letter-spacing:.08em;text-transform:uppercase;font-weight:500}
 .person>p:last-child{line-height:1.7;color:var(--muted)}
 .bride-photo{object-position:75% center}
 .ampersand{font-size:52px;color:var(--accent);margin:24px 0}
@@ -412,4 +412,181 @@ blockquote cite{display:block;font-style:normal;margin-top:14px;color:var(--acce
 @media(prefers-reduced-motion:reduce){
  html{scroll-behavior:auto}
  *,*:before,*:after{animation:none!important;transition:none!important}
+}
+
+/* Readable couple names; independent of the decorative script font loading. */
+.couple-name {
+ font-family: var(--script);
+ font-weight: 600;
+ font-style: normal;
+ line-height: 1.3;
+ letter-spacing: .015em;
+}
+.person-name.couple-name { font-size: clamp(44px, 9vw, 60px); }
+
+/* Keep corner flowers inside the visible mobile viewport and above navigation. */
+@media (max-width: 599px) {
+ .corner-ornaments { bottom: auto; height: 100vh; height: 100dvh; overflow: hidden; }
+ .corner-bl, .corner-br { bottom: calc(var(--mobile-nav-height, 64px) + 12px); }
+ .corner-bl.corner-flower-sm, .corner-br.corner-flower-sm { bottom: calc(var(--mobile-nav-height, 64px) + 56px); }
+ .gate-locked .corner-bl, .gate-locked .corner-br { bottom: calc(env(safe-area-inset-bottom, 0px) + 12px); }
+ .gate-locked .corner-bl.corner-flower-sm, .gate-locked .corner-br.corner-flower-sm { bottom: calc(env(safe-area-inset-bottom, 0px) + 56px); }
+}
+
+/* Compact, flowing couple names stay together on one line. */
+.couple-name { font-weight: 400; letter-spacing: 0; white-space: nowrap; line-height: 1.45; }
+.opening-screen h1.couple-name,
+.hero-content h1.couple-name { font-size: clamp(30px, 8vw, 42px); }
+.person-name.couple-name { font-size: clamp(34px, 8vw, 44px); }
+.visual-card-names.couple-name { font-size: clamp(30px, 3vw, 40px); }
+.closing-signature.couple-name { font-size: clamp(28px, 7vw, 36px); }
+
+/* Clear, compact names with distinct letterforms. */
+.couple-name { font-weight: 600; font-style: normal; line-height: 1.35; letter-spacing: 0; }
+.opening-screen h1.couple-name,
+.hero-content h1.couple-name { font-size: clamp(25px, 6.5vw, 34px); }
+.person-name.couple-name { font-size: clamp(30px, 7vw, 38px); }
+.visual-card-names.couple-name { font-size: clamp(25px, 2.2vw, 30px); }
+.closing-signature.couple-name { font-size: clamp(24px, 6vw, 30px); }
+
+/* Distinct couple colors and a staggered celebratory pop. */
+.couple-name { --husain-color: #802d45; --nayab-color: #a45f48; }
+.dark .couple-name { --husain-color: #efa4ba; --nayab-color: #efbda2; }
+.name-pop {
+ display: inline-block;
+ position: relative;
+ transform-origin: center 70%;
+ animation: name-celebrate 4.8s ease-in-out infinite;
+}
+.name-husain { color: var(--husain-color); }
+.name-nayab { color: var(--nayab-color); animation-delay: .35s; }
+.name-amp { color: var(--muted); }
+.name-pop::after {
+ content: '✦';
+ position: absolute;
+ top: -.25em;
+ right: -.4em;
+ font-family: Georgia, serif;
+ font-size: .35em;
+ pointer-events: none;
+ opacity: 0;
+ animation: name-sparkle 4.8s ease-in-out infinite;
+}
+.name-nayab::after { animation-delay: .35s; }
+@keyframes name-celebrate {
+ 0%, 7%, 28%, 100% { transform: scale(1); text-shadow: none; }
+ 13% { transform: translateY(-3px) scale(1.07); text-shadow: 0 3px 14px color-mix(in srgb, currentColor 25%, transparent); }
+ 19% { transform: scale(.98); }
+ 23% { transform: scale(1.025); }
+}
+@keyframes name-sparkle {
+ 0%, 8%, 30%, 100% { opacity: 0; transform: translateY(3px) scale(.3) rotate(-20deg); }
+ 15% { opacity: .9; transform: translateY(-5px) scale(1) rotate(15deg); }
+ 26% { opacity: 0; transform: translateY(-10px) scale(.6) rotate(35deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+ .name-pop, .name-pop::after { animation: none; }
+ .name-pop::after { display: none; }
+}
+@media (forced-colors: active) {
+ .name-pop, .name-amp { color: CanvasText; text-shadow: none; }
+}
+
+/* Full names preview: keep the pair on one line, including on phones. */
+.opening-screen h1.couple-name,
+.hero-content h1.couple-name,
+.closing-signature.couple-name {
+ font-size: clamp(14px, 4.3vw, 22px);
+ white-space: nowrap;
+}
+.visual-card-names.couple-name { font-size: 17px; white-space: nowrap; }
+.person-name.couple-name { font-size: clamp(25px, 7vw, 34px); }
+
+/* A keepsake-style ending with theme-aware detailing. */
+.site-footer {
+ position: relative;
+ border-top: 0;
+ background: radial-gradient(ellipse at 50% 0%, var(--accent-soft), transparent 70%), var(--soft);
+ padding: 36px 20px calc(var(--mobile-nav-height, 64px) + 42px);
+}
+.site-footer::before { content: ''; position: absolute; top: 0; left: 12%; right: 12%; height: 1px; background: linear-gradient(90deg, transparent, var(--accent), transparent); }
+.footer-ornament { display: flex; align-items: center; justify-content: center; gap: 16px; font-size: 32px; color: var(--accent); margin-bottom: 16px; }
+.footer-ornament span { height: 1px; width: 48px; background: var(--line); }
+.site-footer .footer-eyebrow { font-size: 9px; text-transform: uppercase; letter-spacing: .16em; line-height: 1.8; }
+.site-footer .footer-names { font-size: clamp(14px, 4.3vw, 22px); margin: 18px 0 12px; }
+.site-footer .footer-message { font-size: 13px; line-height: 1.8; letter-spacing: 0; max-width: 280px; margin: 0 auto 24px; }
+.site-footer .social-links { gap: 14px; margin: 0 0 26px; }
+.site-footer .social-links a { width: 44px; height: 44px; border-color: var(--accent-soft); color: var(--accent); box-shadow: var(--shadow-sm); transition: transform .2s, background .2s; }
+.site-footer .social-links a:hover { transform: translateY(-3px); background: var(--accent-soft); }
+.footer-fine-print { border-top: 1px solid var(--line); padding-top: 20px; max-width: 360px; margin: auto; }
+.site-footer .footer-fine-print p { font-size: 10px; line-height: 1.8; letter-spacing: .02em; }
+.site-footer .credit span { color: var(--accent); font-size: 16px; vertical-align: middle; }
+.site-footer .credit a { color: var(--ink); border-bottom: 1px solid var(--accent); }
+.footer-top { display: inline-flex; align-items: center; gap: 10px; font-size: 10px; letter-spacing: .06em; color: var(--muted); margin-top: 22px; padding: 10px; }
+.footer-top span { color: var(--accent); font-size: 18px; }
+@media (min-width: 600px) and (max-width: 1199px) { .site-footer { padding-bottom: 36px; } }
+
+/* Names match the invitation's existing handwritten typography. */
+.couple-name { font-family: var(--script); font-weight: 700; }
+.closing-blessing { max-width: 330px; margin: 30px auto 0; padding: 22px 18px; border-top: 1px solid var(--line); }
+.closing-blessing > span { display: block; font-size: 28px; color: var(--accent); margin-bottom: 12px; }
+.closing-blessing p { font-size: 15px; line-height: 1.8; color: var(--ink); }
+.closing-blessing small { display: block; font-size: 12px; color: var(--muted); margin-top: 12px; letter-spacing: .02em; }
+
+/* Larger names on the opening screen and first invitation section. */
+.opening-screen h1.couple-name,
+.hero-content h1.couple-name {
+ font-size: clamp(23px, 6.2vw, 36px);
+ line-height: 1.4;
+}
+@media (min-width: 1200px) {
+ .hero-content h1.couple-name { font-size: clamp(25px, 2.1vw, 36px); }
+}
+
+/* Give the right-hand couple card the same prominent name treatment. */
+.visual-card-names.couple-name {
+ font-size: clamp(25px, 2.2vw, 32px);
+ line-height: 1.4;
+}
+@media (min-width: 1200px) {
+ .visual-card { max-width: 440px; }
+}
+
+.opening-screen h1.couple-name,
+.hero-content h1.couple-name { font-size: clamp(22px, calc(6.2vw - 1px), 35px); }
+.visual-card-names.couple-name { font-size: clamp(24px, calc(2.2vw - 1px), 31px); }
+@media (min-width: 1200px) {
+ .hero-content h1.couple-name { font-size: clamp(24px, calc(2.1vw - 1px), 35px); }
+}
+
+/* Compact right-side couple card. */
+@media (min-width: 1200px) {
+ .visual-card { width: max-content; max-width: min(380px, 100%); padding: 24px 20px; }
+ .visual-card-names { margin-bottom: 10px; }
+ .visual-card-date { font-size: 13px; letter-spacing: .025em; }
+}
+
+.visual-card-eyebrow { position: relative; color: var(--muted); text-transform: uppercase; font-size: 9px; letter-spacing: .2em; margin-bottom: 12px; }
+.visual-card-divider { display: flex; align-items: center; justify-content: center; gap: 12px; color: var(--accent); font-size: 21px; margin: 0 0 10px; }
+.visual-card-divider span { width: 32px; height: 1px; background: var(--line); }
+.visual-card-blessing { position: relative; color: var(--muted); font-size: 11px; font-style: italic; margin-top: 10px; }
+
+/* Matching invitation opening and keepsake footer. */
+.hero-content::before { content: ''; position: absolute; inset: 20px 14px 12px; border: 1px solid var(--line); border-radius: 160px 160px 24px 24px; pointer-events: none; opacity: .7; z-index: -1; }
+.hero-content .hero-kicker { display: flex; justify-content: center; align-items: center; gap: 12px; font-size: 9px; text-transform: uppercase; letter-spacing: .16em; color: var(--muted); margin: 14px 0 18px; }
+.hero-kicker span { color: var(--accent); font-size: 10px; }
+.hero-content h2 { margin-bottom: 26px; }
+.hero-dedication { font-size: 13px; color: var(--muted); line-height: 1.7; margin: -4px 0 18px; }
+.hero-content .hero-date { font-size: 15px; }
+.footer-date-seal { display: flex; align-items: center; justify-content: center; gap: 15px; color: var(--muted); margin: 20px 0; }
+.footer-date-seal span { font-size: 10px; text-transform: uppercase; letter-spacing: .1em; }
+.footer-date-seal strong { display: grid; place-items: center; width: 48px; height: 54px; border: 1px solid var(--line); border-radius: 24px 24px 6px 6px; font: 26px Georgia, serif; color: var(--accent); }
+.footer-links { display: flex; flex-wrap: wrap; gap: 9px; align-items: center; justify-content: center; margin: 0 0 22px; }
+.footer-links a { font-size: 11px; color: var(--ink); padding: 8px 0; }
+.footer-links a:hover { color: var(--accent); text-decoration: underline; text-underline-offset: 4px; }
+.footer-links > span { font-size: 7px; color: var(--accent); }
+@media (max-width: 380px) {
+ .hero-content .hero-kicker { font-size: 8px; gap: 8px; letter-spacing: .1em; }
+ .footer-links { gap: 7px; }
+ .footer-links a { font-size: 10px; }
 }
