@@ -426,7 +426,10 @@ blockquote cite{display:block;font-style:normal;margin-top:14px;color:var(--acce
 
 /* Keep corner flowers inside the visible mobile viewport and above navigation. */
 @media (max-width: 599px) {
- .corner-ornaments { bottom: auto; height: 100vh; height: 100dvh; overflow: hidden; }
+ .corner-ornaments { height: auto; overflow: visible; }
+ /* Anchor flowers to the same fixed viewport as the bottom navigation.
+    A separate dvh container shifts as mobile browser bars expand/collapse. */
+ .corner-bl, .corner-br { position: fixed; }
  .corner-bl, .corner-br { bottom: calc(var(--mobile-nav-height, 64px) + 12px); }
  .corner-bl.corner-flower-sm, .corner-br.corner-flower-sm { bottom: calc(var(--mobile-nav-height, 64px) + 56px); }
  .gate-locked .corner-bl, .gate-locked .corner-br { bottom: calc(env(safe-area-inset-bottom, 0px) + 12px); }
@@ -507,9 +510,9 @@ blockquote cite{display:block;font-style:normal;margin-top:14px;color:var(--acce
  position: relative;
  border-top: 0;
  background: radial-gradient(ellipse at 50% 0%, var(--accent-soft), transparent 70%), var(--soft);
- padding: 36px 20px calc(var(--mobile-nav-height, 64px) + 42px);
+ padding: 92px 28px calc(var(--mobile-nav-height, 64px) + 42px);
 }
-.site-footer::before { content: ''; position: absolute; top: 0; left: 12%; right: 12%; height: 1px; background: linear-gradient(90deg, transparent, var(--accent), transparent); }
+.site-footer::before { content: ''; position: absolute; inset: 20px 14px 12px; border: 1px solid var(--accent); border-radius: 160px 160px 24px 24px; pointer-events: none; opacity: .9; box-shadow: 0 0 18px color-mix(in srgb, var(--accent) 15%, transparent), inset 0 0 12px color-mix(in srgb, var(--accent) 8%, transparent); }
 .footer-ornament { display: flex; align-items: center; justify-content: center; gap: 16px; font-size: 32px; color: var(--accent); margin-bottom: 16px; }
 .footer-ornament span { height: 1px; width: 48px; background: var(--line); }
 .site-footer .footer-eyebrow { font-size: 9px; text-transform: uppercase; letter-spacing: .16em; line-height: 1.8; }
@@ -572,7 +575,7 @@ blockquote cite{display:block;font-style:normal;margin-top:14px;color:var(--acce
 .visual-card-blessing { position: relative; color: var(--muted); font-size: 11px; font-style: italic; margin-top: 10px; }
 
 /* Matching invitation opening and keepsake footer. */
-.hero-content::before { content: ''; position: absolute; inset: 20px 14px 12px; border: 1px solid var(--line); border-radius: 160px 160px 24px 24px; pointer-events: none; opacity: .7; z-index: -1; }
+.hero-content::before { content: ''; position: absolute; inset: 20px 14px 12px; border: 1px solid var(--accent); border-radius: 160px 160px 24px 24px; pointer-events: none; opacity: .9; z-index: -1; box-shadow: 0 0 18px color-mix(in srgb, var(--accent) 15%, transparent), inset 0 0 12px color-mix(in srgb, var(--accent) 8%, transparent); }
 .hero-content .hero-kicker { display: flex; justify-content: center; align-items: center; gap: 12px; font-size: 9px; text-transform: uppercase; letter-spacing: .16em; color: var(--muted); margin: 14px 0 18px; }
 .hero-kicker span { color: var(--accent); font-size: 10px; }
 .hero-content h2 { margin-bottom: 26px; }
@@ -590,3 +593,27 @@ blockquote cite{display:block;font-style:normal;margin-top:14px;color:var(--acce
  .footer-links { gap: 7px; }
  .footer-links a { font-size: 10px; }
 }
+
+/* Hearts and stars escape the card without intercepting taps or scrolling. */
+.couple-name, .name-pop { cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.couple-name:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; border-radius: 4px; }
+.name-celebration-particle { position: fixed; z-index: 10000; pointer-events: none; user-select: none; font: 32px/1 Georgia, serif; text-shadow: 0 1px 5px var(--paper), 0 0 10px currentColor; opacity: 0; animation: name-burst 1.7s cubic-bezier(.15,.65,.3,1) forwards; }
+@keyframes name-burst {
+ 0% { opacity: 0; transform: translate(-50%, -50%) scale(.3); }
+ 15% { opacity: 1; }
+ 45% { opacity: 1; transform: translate(calc(-50% + var(--burst-x) * .65), calc(-50% + var(--burst-y) * .65)) rotate(var(--burst-turn)) scale(1.2); }
+ 100% { opacity: 0; transform: translate(calc(-50% + var(--burst-x)), calc(-50% + var(--burst-y))) rotate(var(--burst-turn)) scale(.65); }
+}
+@media (prefers-reduced-motion: reduce) { .name-celebration-particle { display: none; } }
+
+/* Framed opening invitation with visible rose hearts. */
+.opening-screen::before { content: ''; position: fixed; inset: 20px 14px 12px; width: min(560px, calc(100% - 28px)); margin-inline: auto; border: 1px solid var(--accent); border-radius: 160px 160px 24px 24px; pointer-events: none; opacity: .9; box-shadow: 0 0 18px color-mix(in srgb, var(--accent) 15%, transparent), inset 0 0 12px color-mix(in srgb, var(--accent) 8%, transparent); }
+.opening-screen .photo-ring { position: relative; flex-shrink: 0; }
+.opening-heart { position: absolute; font: 30px/1 Georgia, serif; color: #b54868; text-shadow: 0 3px 12px #b5486830; animation: opening-heartbeat 2.4s ease-in-out infinite; }
+.opening-heart-left { left: -38px; bottom: 18px; transform: rotate(-18deg); }
+.opening-heart-right { right: -35px; top: 16px; transform: rotate(18deg); animation-delay: -.8s; }
+.dark .opening-heart { color: #f1a3be; }
+@keyframes opening-heartbeat { 50% { scale: 1.18; } }
+.name-celebration-particle.burst-heart { font-size: 38px; color: #bb4167 !important; }
+.dark .name-celebration-particle.burst-heart { color: #ff9fbe !important; }
+@media(prefers-reduced-motion:reduce) { .opening-heart { animation: none; } }
