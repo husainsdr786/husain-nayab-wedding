@@ -43,11 +43,6 @@
         window.setTimeout(function () { burst.remove(); }, 3600);
     }
 
-    // Guests choose on the gate whether the music starts with the invitation.
-    function musicWanted() {
-        try { return localStorage.getItem('gate-music') !== 'off'; } catch (_) { return true; }
-    }
-
     function openInvitation() {
         if (opening) return;
         opening = true;
@@ -58,7 +53,7 @@
             gate.classList.remove('is-loading');
             gate.classList.add('is-opening');
             var audio = document.getElementById('my_audio');
-            if (audio && musicWanted()) audio.play().catch(function () { /* The invitation also works without audio. */ });
+            if (audio) audio.play().catch(function () { /* The invitation also works without audio. */ });
             if (!reducedMotion) spawnCelebration();
             window.setTimeout(function () {
                 gate.hidden = true;
@@ -162,7 +157,7 @@
         }
         applyAccent(currentAccent);
     })();
-    // Opening-screen style card: light/dark buttons, music switch and the countdown chip.
+    // Opening-screen style card: light/dark buttons and the countdown chip.
     (function () {
         var modeButtons = Array.from(document.querySelectorAll('.prefs-mode [data-mode]'));
         function syncMode() {
@@ -178,20 +173,6 @@
         themeToggle.addEventListener('click', syncMode);
         syncMode();
 
-        var musicSwitch = document.getElementById('gate-music');
-        // Same 'gate-music' key openInvitation() reads before starting the audio.
-        function musicWanted() {
-            try { return localStorage.getItem('gate-music') !== 'off'; } catch (_) { return true; }
-        }
-        if (musicSwitch) {
-            musicSwitch.setAttribute('aria-checked', String(musicWanted()));
-            musicSwitch.addEventListener('click', function () {
-                var on = musicSwitch.getAttribute('aria-checked') !== 'true';
-                musicSwitch.setAttribute('aria-checked', String(on));
-                try { localStorage.setItem('gate-music', on ? 'on' : 'off'); } catch (_) {}
-            });
-        }
-
         var chip = document.querySelector('.gate-countdown');
         var when = new Date(document.body.dataset.weddingDate);
         if (chip && Number.isFinite(when.getTime())) {
@@ -202,25 +183,56 @@
                 var from = istDay.format(new Date()).split('-'), to = istDay.format(date).split('-');
                 return Math.round((Date.UTC(to[0], to[1] - 1, to[2]) - Date.UTC(from[0], from[1] - 1, from[2])) / 86400000);
             }
-            var days = daysUntil(when);
-            var walimaToday = daysUntil(new Date('2026-11-22T11:00:00+05:30')) === 0;
+            var walimaDate = new Date('2026-11-22T11:00:00+05:30');
             var number = chip.querySelector('.gate-countdown-num');
-            number.textContent = days > 1 ? days : '';
-            number.hidden = days <= 1;
-            // After the wedding: "Just married" for a month, "Nth anniversary" every 21 Nov,
-            // and "Married 21 Nov 2026" on every other day.
-            var today = istDay.format(new Date()).split('-'), wedding = istDay.format(when).split('-');
-            var years = today[0] - wedding[0];
-            var anniversary = years > 0 && today[1] === wedding[1] && today[2] === wedding[2];
+            var label = chip.querySelector('[data-gate-countdown]');
+            var timer = chip.querySelector('.gate-countdown-timer');
+            var units = { h: timer.querySelector('[data-unit="h"]'), m: timer.querySelector('[data-unit="m"]'), s: timer.querySelector('[data-unit="s"]') };
             function ordinal(n) {
                 var tens = n % 100, suffix = tens > 10 && tens < 14 ? 'th' : ({ 1: 'st', 2: 'nd', 3: 'rd' }[n % 10] || 'th');
                 return n + suffix;
             }
             var married = 'Married ' + new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'Asia/Kolkata' }).format(when);
-            chip.querySelector('[data-gate-countdown]').textContent =
-                days > 1 ? 'days to go' : days === 1 ? 'Tomorrow' : days === 0 ? 'Today is the day'
-                    : walimaToday ? 'Walima today' : anniversary ? ordinal(years) + ' anniversary'
-                    : -days <= 30 ? 'Just married' : married;
+            function pad(n) { return (n < 10 ? '0' : '') + n; }
+            function render() {
+                var days = daysUntil(when);
+                var left = Math.floor((when - new Date()) / 1000);
+                var badge = '';
+                var text;
+                // Before the 9 pm ceremony the chip ticks: whole days in the badge while two or
+                // more calendar days remain, then "Tomorrow" / "Today" with the full hour count.
+                if (left > 0) {
+                    var hours = Math.floor(left / 3600);
+                    if (days >= 2) {
+                        badge = Math.floor(hours / 24);
+                        hours %= 24;
+                        text = badge === 1 ? 'day' : 'days';
+                    } else {
+                        text = days === 1 ? 'Tomorrow' : 'Today';
+                    }
+                    units.h.textContent = pad(hours);
+                    units.m.textContent = pad(Math.floor(left / 60) % 60);
+                    units.s.textContent = pad(left % 60);
+                } else {
+                    // After the wedding: "Just married" for a month, "Nth anniversary" every 21 Nov,
+                    // and "Married 21 Nov 2026" on every other day.
+                    var today = istDay.format(new Date()).split('-'), wedding = istDay.format(when).split('-');
+                    var years = today[0] - wedding[0];
+                    var anniversary = years > 0 && today[1] === wedding[1] && today[2] === wedding[2];
+                    text = days === 0 ? 'Today is the day' : daysUntil(walimaDate) === 0 ? 'Walima today'
+                        : anniversary ? ordinal(years) + ' anniversary' : -days <= 30 ? 'Just married' : married;
+                }
+                number.textContent = badge;
+                number.hidden = badge === '';
+                timer.hidden = left <= 0;
+                if (label.textContent !== text) label.textContent = text;
+                return left > 0;
+            }
+            if (render()) {
+                var tick = window.setInterval(function () { if (!render()) window.clearInterval(tick); }, 1000);
+                // Nobody sees the chip once the invitation opens, so stop ticking then.
+                window.addEventListener('invitation-opened', function () { window.clearInterval(tick); }, { once: true });
+            }
             chip.hidden = false;
         }
     })();

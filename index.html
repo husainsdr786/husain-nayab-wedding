@@ -52,7 +52,7 @@
 </head>
 <body data-wedding-date="2026-11-21T21:00:00+05:30">
  <div class="opening-screen" id="wedding-gate" role="dialog" aria-modal="true" aria-labelledby="gate-heading">
-  <p class="gate-countdown" hidden><strong class="gate-countdown-num"></strong><span class="gate-countdown-text" data-gate-countdown></span><svg class="gate-countdown-heart" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5S2.5 14 2.5 8C2.5 2.5 9 1.5 12 6C15 1.5 21.5 2.5 21.5 8C21.5 14 12 20.5 12 20.5Z" fill="currentColor"/></svg></p>
+  <p class="gate-countdown" hidden><strong class="gate-countdown-num"></strong><span class="gate-countdown-text" data-gate-countdown></span><span class="gate-countdown-timer" hidden><span class="gate-countdown-sep" aria-hidden="true"></span><b data-unit="h">00</b><small>h</small><b data-unit="m">00</b><small>m</small><b data-unit="s">00</b><small>s</small></span><svg class="gate-countdown-heart" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5S2.5 14 2.5 8C2.5 2.5 9 1.5 12 6C15 1.5 21.5 2.5 21.5 8C21.5 14 12 20.5 12 20.5Z" fill="currentColor"/></svg></p>
   <p class="script opening-title">The Wedding Of</p>
   <span class="photo-ring"><img class="round-photo" src="assets/img/placeholder-couple.svg" alt="Husain and Nayab monogram placeholder" width="210" height="210"><span class="opening-heart opening-heart-left" aria-hidden="true">♥</span><span class="opening-heart opening-heart-right" aria-hidden="true">♥</span></span>
   <h1 class="couple-name" id="gate-heading"><span class="name-pop name-husain">Athar Husain</span> <span class="name-amp">&amp;</span> <span class="name-pop name-nayab">Samar Nayab</span></h1>
@@ -75,7 +75,6 @@
    </div>
    <div class="prefs-row">
     <div class="prefs-mode" role="group" aria-label="Light or dark mode"><button type="button" data-mode="light" aria-pressed="true"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.8"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4 6 18M18 6l1.4-1.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>Light</span></button><button type="button" data-mode="dark" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg><span>Dark</span></button></div>
-    <button type="button" class="prefs-music" id="gate-music" role="switch" aria-checked="true"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 18V6l10-2v12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="6.5" cy="18" r="2.5" stroke="currentColor" stroke-width="1.8"/><circle cx="16.5" cy="16" r="2.5" stroke="currentColor" stroke-width="1.8"/></svg><span>Music</span><span class="prefs-switch" aria-hidden="true"><i></i></span></button>
    </div>
   </div>
  </div>
@@ -87,8 +86,8 @@
      <div class="petals" aria-hidden="true"></div>
     </div>
     <div class="hero-content">
+     <h2 class="script hero-title">Wedding Invitation</h2>
      <p class="hero-kicker"><span aria-hidden="true">✦</span> You are warmly invited <span aria-hidden="true">✦</span></p>
-     <h2 class="script">Wedding Invitation</h2>
      <span class="photo-ring"><img class="round-photo" src="assets/img/placeholder-couple.svg" alt="Husain and Nayab monogram placeholder" width="210" height="210"></span>
      <h1 class="couple-name"><span class="name-pop name-husain">Athar Husain</span> <span class="name-amp">&amp;</span> <span class="name-pop name-nayab">Samar Nayab</span></h1>
      <p class="hero-date" data-full-date>Saturday, November 21 2026</p>
