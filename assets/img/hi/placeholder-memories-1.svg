@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450">
+ <defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+   <stop offset="0" stop-color="#f4e9d4"/><stop offset="1" stop-color="#dce7db"/>
+  </linearGradient>
+ </defs>
+ <rect width="600" height="450" fill="url(#bg)"/>
+ <rect x="14" y="14" width="572" height="422" fill="none" stroke="#a9823f" stroke-opacity=".35" stroke-width="1.5"/>
+ <path transform="translate(300,190)" d="M0 60S-70 12-70-30C-70-66-20-72 0-40 20-72 70-66 70-30 70 12 0 60 0 60Z" fill="none" stroke="#a9823f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+ <text x="300" y="300" font-family="sans-serif" font-style="normal" font-size="26" fill="#a9823f" text-anchor="middle" letter-spacing="0">यादें 1</text>
+</svg>

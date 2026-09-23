@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450">
+ <defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+   <stop offset="0" stop-color="#f4e9d4"/><stop offset="1" stop-color="#dce7db"/>
+  </linearGradient>
+ </defs>
+ <rect width="600" height="450" fill="url(#bg)"/>
+ <rect x="14" y="14" width="572" height="422" fill="none" stroke="#a9823f" stroke-opacity=".35" stroke-width="1.5"/>
+ <g transform="translate(300,195)" fill="none" stroke="#a9823f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M-30-50h60l-10 40h-40Z"/>
+  <path d="M-20-10c-20 20-20 60 0 76 20-16 20-56 0-76Z"/>
+  <path d="M0-10c-20 20-20 60 0 76 20-16 20-56 0-76Z"/>
+  <path d="M20-10c-20 20-20 60 0 76 20-16 20-56 0-76Z"/>
+  <line x1="0" y1="66" x2="0" y2="80"/>
+ </g>
+ <text x="300" y="310" font-family="sans-serif" font-style="normal" font-size="26" fill="#a9823f" text-anchor="middle" letter-spacing="0">वलीमा 2</text>
+</svg>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450">
+ <defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+   <stop offset="0" stop-color="#f4e9d4"/><stop offset="1" stop-color="#dce7db"/>
+  </linearGradient>
+ </defs>
+ <rect width="600" height="450" fill="url(#bg)"/>
+ <rect x="14" y="14" width="572" height="422" fill="none" stroke="#a9823f" stroke-opacity=".35" stroke-width="1.5"/>
+ <g transform="translate(300,195)" fill="none" stroke="#a9823f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+  <line x1="-40" y1="-60" x2="-40" y2="70"/>
+  <path d="M-52-60v26M-40-60v26M-28-60v26"/>
+  <path d="M-52-34c0 14 24 14 24 0"/>
+  <ellipse cx="40" cy="-45" rx="14" ry="18"/>
+  <line x1="40" y1="-27" x2="40" y2="70"/>
+ </g>
+ <text x="300" y="310" font-family="sans-serif" font-style="normal" font-size="26" fill="#a9823f" text-anchor="middle" letter-spacing="0">ولیمہ 3</text>
+</svg>

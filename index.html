@@ -21,7 +21,7 @@
  <link rel="icon" href="husain-nayab-favicon.png">
  <link rel="preconnect" href="https://fonts.googleapis.com">
  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
- <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Josefin+Sans:wght@400;500;600&family=Noto+Naskh+Arabic&display=swap" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Josefin+Sans:wght@400;500;600&family=Noto+Naskh+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
  <link rel="stylesheet" href="css/style.css">
  <script>
   (function () {
@@ -52,6 +52,7 @@
 </head>
 <body data-wedding-date="2026-11-21T21:00:00+05:30">
  <div class="opening-screen" id="wedding-gate" role="dialog" aria-modal="true" aria-labelledby="gate-heading">
+  <p class="gate-countdown" hidden><strong class="gate-countdown-num"></strong><span class="gate-countdown-text" data-gate-countdown></span><svg class="gate-countdown-heart" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5S2.5 14 2.5 8C2.5 2.5 9 1.5 12 6C15 1.5 21.5 2.5 21.5 8C21.5 14 12 20.5 12 20.5Z" fill="currentColor"/></svg></p>
   <p class="script opening-title">The Wedding Of</p>
   <span class="photo-ring"><img class="round-photo" src="assets/img/placeholder-couple.svg" alt="Husain and Nayab monogram placeholder" width="210" height="210"><span class="opening-heart opening-heart-left" aria-hidden="true">♥</span><span class="opening-heart opening-heart-right" aria-hidden="true">♥</span></span>
   <h1 class="couple-name" id="gate-heading"><span class="name-pop name-husain">Athar Husain</span> <span class="name-amp">&amp;</span> <span class="name-pop name-nayab">Samar Nayab</span></h1>
@@ -60,14 +61,21 @@
    <div class="loader-ring"></div>
    <p class="loader-text">Preparing your invitation&hellip;</p>
   </div>
-  <div class="theme-picker">
-   <p class="theme-picker-label">Choose a theme</p>
-   <div class="theme-swatches">
+  <div class="theme-picker gate-prefs">
+   <div class="prefs-head">
+    <div class="prefs-preview" aria-hidden="true"><span class="prefs-preview-mono">H<i>&amp;</i>N</span><span class="prefs-preview-line"></span><span class="prefs-preview-date">21.11.26</span></div>
+    <div class="prefs-summary"><p class="theme-picker-label">Choose your style</p><p class="prefs-value" aria-live="polite"><span data-accent-name>Gold</span> <span aria-hidden="true">&middot;</span> <span data-mode-name>Light</span></p></div>
+   </div>
+   <div class="theme-swatches" role="group" aria-label="Colour theme">
     <button class="swatch active" data-accent="" style="background:#a9823f" aria-label="Gold theme" aria-pressed="true"></button>
     <button class="swatch" data-accent="rose" style="background:#c96b80" aria-label="Rose Blush theme" aria-pressed="false"></button>
     <button class="swatch" data-accent="emerald" style="background:#2f6b4f" aria-label="Emerald theme" aria-pressed="false"></button>
     <button class="swatch" data-accent="sapphire" style="background:#3a5a9e" aria-label="Sapphire theme" aria-pressed="false"></button>
     <button class="swatch" data-accent="burgundy" style="background:#8a2b40" aria-label="Burgundy theme" aria-pressed="false"></button>
+   </div>
+   <div class="prefs-row">
+    <div class="prefs-mode" role="group" aria-label="Light or dark mode"><button type="button" data-mode="light" aria-pressed="true"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.8"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4 6 18M18 6l1.4-1.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>Light</span></button><button type="button" data-mode="dark" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg><span>Dark</span></button></div>
+    <button type="button" class="prefs-music" id="gate-music" role="switch" aria-checked="true"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 18V6l10-2v12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="6.5" cy="18" r="2.5" stroke="currentColor" stroke-width="1.8"/><circle cx="16.5" cy="16" r="2.5" stroke="currentColor" stroke-width="1.8"/></svg><span>Music</span><span class="prefs-switch" aria-hidden="true"><i></i></span></button>
    </div>
   </div>
  </div>
@@ -152,7 +160,7 @@
     <p id="countdown-status" role="status"></p>
     <p class="event-blessing reveal">By asking for the grace and blessing of Allah Subhanahu Wa Ta'ala, God willing, we will hold an event:</p>
     <div class="event-block reveal"><span class="heart heart-right" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none"><path d="M24 41S5 28.5 5 16.5C5 5.5 18 3 24 12C30 3 43 5.5 43 16.5C43 28.5 24 41 24 41Z" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div class="event-period evening"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M16 18A8 8 0 0 1 9 4a8 8 0 1 0 7 14Z" fill="currentColor" opacity=".85"/><g class="event-stars" fill="currentColor"><path d="m17 2 1.1 3.4L21.5 6.5l-3.4 1.1L17 11l-1.1-3.4-3.4-1.1 3.4-1.1Z"/><circle cx="21" cy="14" r="1"/></g></svg><span>Evening celebration</span></div><h3 class="script">Wedding Ceremony</h3><p data-wedding-date-label>21 November 2026</p><p class="event-time" id="ceremony-time">9:00 PM IST</p></div>
-    <div class="event-block reveal"><div class="event-period morning"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><g class="event-sunrise"><path d="M6 15a6 6 0 0 1 12 0" fill="currentColor" opacity=".75"/><path d="M12 3v3M3.5 7l2 2m15-2-2 2M2 13h2m16 0h2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></g><path d="M3 17h18M6 21h12" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg><span>Morning gathering</span></div><h3 class="script">Reception / Walima</h3><p>22 November 2026</p><p class="event-time">11:00 AM IST</p></div>
+    <div class="event-block reveal"><div class="event-period morning"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><g class="event-sunrise"><path d="M6 15a6 6 0 0 1 12 0" fill="currentColor" opacity=".75"/><path d="M12 3v3M3.5 7l2 2m15-2-2 2M2 13h2m16 0h2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></g><path d="M3 17h18M6 21h12" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg><span>Morning gathering</span></div><h3 class="script">Reception / Walima</h3><p data-walima-date>22 November 2026</p><p class="event-time" data-walima-time>11:00 AM IST</p></div>
     <div class="dress-code reveal"><span class="heart heart-left" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none"><path d="M24 41S5 28.5 5 16.5C5 5.5 18 3 24 12C30 3 43 5.5 43 16.5C43 28.5 24 41 24 41Z" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p>We would love to see you dressed for a beautiful evening of celebration.</p><div class="swatches" aria-label="Suggested colors: ivory, sage and forest green"><span></span><span></span><span></span></div><p>Festive &amp; traditional attire</p></div>
     <div class="venue-block reveal" id="venue">
      <div class="venue-info">
@@ -264,7 +272,15 @@
     <p class="visual-card-blessing">Together, by the grace of Allah</p>
    </div>
   </aside>
-  <div class="utility-controls"><button id="theme-toggle" aria-label="Switch to dark theme" title="Change theme">◐</button><button id="color-theme-toggle" aria-label="Change colour theme" title="Colour theme"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21a9 9 0 1 1 0-18c4.5 0 8 3 8 6.5 0 2-1.5 3.5-3.5 3.5H15a1.8 1.8 0 0 0-1.3 3.1c.4.4.6.9.6 1.4 0 1.4-1 2-2.3 2Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="7.5" cy="10.5" r="1.3" fill="currentColor"/><circle cx="11" cy="7" r="1.3" fill="currentColor"/><circle cx="15.5" cy="8.5" r="1.3" fill="currentColor"/></svg></button><button id="motion-toggle" aria-label="Pause animations" aria-pressed="false" title="Pause animations">Ⅱ</button><button id="music-toggle" aria-label="Play music" aria-pressed="false" title="Music">♫</button></div>
+  <div class="utility-controls" id="utility-controls">
+   <div class="utility-menu" id="utility-menu" role="group" aria-label="Invitation settings">
+    <button id="music-toggle" type="button" aria-label="Play music" aria-pressed="false"><span class="utility-label"><span class="when-off">Play music</span><span class="when-on">Pause music</span></span><span class="utility-icon"><span class="when-off"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 18V6l10-2v12" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><circle cx="6.5" cy="18" r="2.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><circle cx="16.5" cy="16" r="2.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="when-on"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 18V6l10-2v12" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><circle cx="6.5" cy="18" r="2.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><circle cx="16.5" cy="16" r="2.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M3.5 3.5l17 17" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span></button>
+    <button id="motion-toggle" type="button" aria-label="Pause animations" aria-pressed="false"><span class="utility-label"><span class="when-off">Pause motion</span><span class="when-on">Resume motion</span></span><span class="utility-icon"><span class="when-off"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6v12M15 6v12" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg></span><span class="when-on"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5L8 5.5Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span></button>
+    <button id="color-theme-toggle" type="button" aria-label="Change colour theme"><span class="utility-label">Colour <i class="utility-accent-dot" aria-hidden="true"></i></span><span class="utility-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21a9 9 0 1 1 0-18c4.5 0 8 3 8 6.5 0 2-1.5 3.5-3.5 3.5H15a1.8 1.8 0 0 0-1.3 3.1c.4.4.6.9.6 1.4 0 1.4-1 2-2.3 2Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="7.5" cy="10.5" r="1.3" fill="currentColor"/><circle cx="11" cy="7" r="1.3" fill="currentColor"/><circle cx="15.5" cy="8.5" r="1.3" fill="currentColor"/></svg></span></button>
+    <button id="theme-toggle" type="button" aria-label="Switch to dark theme"><span class="utility-label"><span class="theme-light-only">Dark mode</span><span class="theme-dark-only">Light mode</span></span><span class="utility-icon"><span class="theme-light-only"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="theme-dark-only"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4 6 18M18 6l1.4-1.4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span></button>
+   </div>
+   <button class="utility-fab" id="utility-fab" type="button" aria-expanded="false" aria-controls="utility-menu" aria-label="Settings"><span class="fab-open"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h9M17 7h3M4 17h3M11 17h9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><circle cx="15" cy="7" r="2.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="17" r="2.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="fab-close"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg></span><span class="fab-music" aria-hidden="true"><i></i><i></i><i></i></span></button>
+  </div>
   <nav class="site-nav" aria-label="Invitation sections">
    <a href="#home" class="active"><span aria-hidden="true"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none"><path d="M4 11.5 12 4l8 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 10v9a1 1 0 0 0 1 1h4v-6h2v6h4a1 1 0 0 0 1-1v-9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Home</a>
    <a href="#couple"><span aria-hidden="true"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none"><circle cx="9" cy="14" r="5" stroke="currentColor" stroke-width="1.8"/><circle cx="15" cy="14" r="5" stroke="currentColor" stroke-width="1.8"/></svg></span>Couple</a>
@@ -289,6 +305,6 @@
   <div class="corner-flower corner-flower-sm corner-panel-bl"></div>
  </div>
  <audio src="assets/mp3/song.mp3" id="my_audio" loop preload="none"></audio>
- <script src="js/script.js"></script><script src="js/celebration.js"></script><script src="js/gate.js"></script>
+ <script src="js/script.js"></script><script src="js/celebration.js"></script><script src="js/gate.js"></script><script src="js/translations.js"></script><script src="js/languages.js"></script>
 </body>
 </html>

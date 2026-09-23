@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450">
+ <defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+   <stop offset="0" stop-color="#f4e9d4"/><stop offset="1" stop-color="#dce7db"/>
+  </linearGradient>
+ </defs>
+ <rect width="600" height="450" fill="url(#bg)"/>
+ <rect x="14" y="14" width="572" height="422" fill="none" stroke="#a9823f" stroke-opacity=".35" stroke-width="1.5"/>
+ <g transform="translate(300,195)" fill="none" stroke="#a9823f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M0-40C-14-54-56-54-56-20V52C-56 18-14 18 0 32Z"/>
+  <path d="M0-40C14-54 56-54 56-20V52C56 18 14 18 0 32Z"/>
+  <line x1="0" y1="-40" x2="0" y2="32"/>
+ </g>
+ <text x="300" y="310" font-family="sans-serif" font-style="normal" font-size="26" fill="#a9823f" text-anchor="middle" letter-spacing="0">विवाह 3</text>
+</svg>

@@ -43,6 +43,11 @@
         window.setTimeout(function () { burst.remove(); }, 3600);
     }
 
+    // Guests choose on the gate whether the music starts with the invitation.
+    function musicWanted() {
+        try { return localStorage.getItem('gate-music') !== 'off'; } catch (_) { return true; }
+    }
+
     function openInvitation() {
         if (opening) return;
         opening = true;
@@ -53,7 +58,7 @@
             gate.classList.remove('is-loading');
             gate.classList.add('is-opening');
             var audio = document.getElementById('my_audio');
-            if (audio) audio.play().catch(function () { /* The invitation also works without audio. */ });
+            if (audio && musicWanted()) audio.play().catch(function () { /* The invitation also works without audio. */ });
             if (!reducedMotion) spawnCelebration();
             window.setTimeout(function () {
                 gate.hidden = true;
@@ -70,8 +75,10 @@
     gate.addEventListener('keydown', function (event) {
         if (event.key === 'Escape') openInvitation();
         if (event.key === 'Tab') {
-            event.preventDefault();
-            openButton.focus();
+            var controls = Array.from(gate.querySelectorAll('button, select, [tabindex="0"]')).concat(Array.from(document.querySelectorAll('.lang-shutter-gate button'))).filter(function (el) { return !el.disabled && !el.closest('[inert]') && el.getClientRects().length; });
+            var first = controls[0], last = controls[controls.length - 1];
+            if (event.shiftKey && (document.activeElement === first || document.activeElement === gate)) { event.preventDefault(); last.focus(); }
+            else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
         }
     });
 })();
@@ -83,13 +90,29 @@
     function updateMusic() {
         music.setAttribute('aria-pressed', String(!audio.paused));
         music.setAttribute('aria-label', audio.paused ? 'Play music' : 'Pause music');
-        music.textContent = audio.paused ? '♫' : '♪';
+        document.documentElement.classList.toggle('music-playing', !audio.paused);
     }
     audio.addEventListener('play', updateMusic);
     audio.addEventListener('pause', updateMusic);
     music.addEventListener('click', function () {
         if (audio.paused) audio.play().catch(updateMusic); else audio.pause();
     });
+    // Settings speed dial: one corner button that fans the four controls out upward.
+    (function () {
+        var dock = document.getElementById('utility-controls');
+        var fab = document.getElementById('utility-fab');
+        if (!dock || !fab) return;
+        function setOpen(open) {
+            dock.classList.toggle('open', open);
+            fab.setAttribute('aria-expanded', String(open));
+            fab.setAttribute('aria-label', open ? 'Close settings' : 'Settings');
+        }
+        fab.addEventListener('click', function () { setOpen(!dock.classList.contains('open')); });
+        document.addEventListener('click', function (event) { if (!dock.contains(event.target)) setOpen(false); });
+        dock.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape' && dock.classList.contains('open')) { setOpen(false); fab.focus(); }
+        });
+    })();
     var themeToggle = document.getElementById('theme-toggle');
     if (document.documentElement.classList.contains('dark')) {
         themeToggle.setAttribute('aria-label', 'Switch to light theme');
@@ -116,6 +139,7 @@
                 document.documentElement.setAttribute('data-accent', name);
                 localStorage.setItem('accentTheme', name);
             }
+            document.querySelectorAll('[data-accent-name]').forEach(function (el) { el.textContent = accentLabels[name] || name; });
             if (colorToggle) {
                 colorToggle.setAttribute('aria-label', 'Colour theme: ' + (accentLabels[name] || name) + '. Click to try the next one.');
                 colorToggle.title = accentLabels[name] || name;
@@ -138,6 +162,68 @@
         }
         applyAccent(currentAccent);
     })();
+    // Opening-screen style card: light/dark buttons, music switch and the countdown chip.
+    (function () {
+        var modeButtons = Array.from(document.querySelectorAll('.prefs-mode [data-mode]'));
+        function syncMode() {
+            var dark = document.documentElement.classList.contains('dark');
+            modeButtons.forEach(function (button) { button.setAttribute('aria-pressed', String((button.dataset.mode === 'dark') === dark)); });
+            document.querySelectorAll('[data-mode-name]').forEach(function (el) { el.textContent = dark ? 'Dark' : 'Light'; });
+        }
+        modeButtons.forEach(function (button) {
+            button.addEventListener('click', function () {
+                if ((button.dataset.mode === 'dark') !== document.documentElement.classList.contains('dark')) themeToggle.click();
+            });
+        });
+        themeToggle.addEventListener('click', syncMode);
+        syncMode();
+
+        var musicSwitch = document.getElementById('gate-music');
+        // Same 'gate-music' key openInvitation() reads before starting the audio.
+        function musicWanted() {
+            try { return localStorage.getItem('gate-music') !== 'off'; } catch (_) { return true; }
+        }
+        if (musicSwitch) {
+            musicSwitch.setAttribute('aria-checked', String(musicWanted()));
+            musicSwitch.addEventListener('click', function () {
+                var on = musicSwitch.getAttribute('aria-checked') !== 'true';
+                musicSwitch.setAttribute('aria-checked', String(on));
+                try { localStorage.setItem('gate-music', on ? 'on' : 'off'); } catch (_) {}
+            });
+        }
+
+        var chip = document.querySelector('.gate-countdown');
+        var when = new Date(document.body.dataset.weddingDate);
+        if (chip && Number.isFinite(when.getTime())) {
+            // Count whole calendar days in India, not hours to the 9 pm ceremony, so the
+            // wedding day reads "Today" from midnight and the next day is the Walima.
+            var istDay = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Kolkata', year: 'numeric', month: '2-digit', day: '2-digit' });
+            function daysUntil(date) {
+                var from = istDay.format(new Date()).split('-'), to = istDay.format(date).split('-');
+                return Math.round((Date.UTC(to[0], to[1] - 1, to[2]) - Date.UTC(from[0], from[1] - 1, from[2])) / 86400000);
+            }
+            var days = daysUntil(when);
+            var walimaToday = daysUntil(new Date('2026-11-22T11:00:00+05:30')) === 0;
+            var number = chip.querySelector('.gate-countdown-num');
+            number.textContent = days > 1 ? days : '';
+            number.hidden = days <= 1;
+            // After the wedding: "Just married" for a month, "Nth anniversary" every 21 Nov,
+            // and "Married 21 Nov 2026" on every other day.
+            var today = istDay.format(new Date()).split('-'), wedding = istDay.format(when).split('-');
+            var years = today[0] - wedding[0];
+            var anniversary = years > 0 && today[1] === wedding[1] && today[2] === wedding[2];
+            function ordinal(n) {
+                var tens = n % 100, suffix = tens > 10 && tens < 14 ? 'th' : ({ 1: 'st', 2: 'nd', 3: 'rd' }[n % 10] || 'th');
+                return n + suffix;
+            }
+            var married = 'Married ' + new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'Asia/Kolkata' }).format(when);
+            chip.querySelector('[data-gate-countdown]').textContent =
+                days > 1 ? 'days to go' : days === 1 ? 'Tomorrow' : days === 0 ? 'Today is the day'
+                    : walimaToday ? 'Walima today' : anniversary ? ordinal(years) + ' anniversary'
+                    : -days <= 30 ? 'Just married' : married;
+            chip.hidden = false;
+        }
+    })();
     var reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
     var motion = document.getElementById('motion-toggle');
     var paused = reduced.matches;
@@ -145,7 +231,6 @@
         document.body.classList.toggle('paused', paused);
         motion.setAttribute('aria-pressed', String(paused));
         motion.setAttribute('aria-label', paused ? 'Resume animations' : 'Pause animations');
-        motion.textContent = paused ? '▷' : 'Ⅱ';
     }
     motion.addEventListener('click', function () { paused = !paused; updateMotion(); });
     updateMotion();
@@ -321,12 +406,13 @@
     var copyButton = document.getElementById('copy-link');
     var status = document.getElementById('share-status');
     if (!shareButton || !copyButton || !status) return;
-    var shareText = "You're invited to Husain & Nayab's wedding!";
     shareButton.addEventListener('click', function () {
+        var shareText = window.weddingI18n ? window.weddingI18n.translate("You're invited to Husain & Nayab's wedding!") : "You're invited to Husain & Nayab's wedding!";
+        var shareUrl = window.weddingI18n ? window.weddingI18n.shareUrl() : location.href;
         if (navigator.share) {
-            navigator.share({ title: document.title, text: shareText, url: location.href }).catch(function () {});
+            navigator.share({ title: document.title, text: shareText, url: shareUrl }).catch(function () {});
         } else {
-            window.open('https://wa.me/?text=' + encodeURIComponent(shareText + ' ' + location.href), '_blank', 'noopener');
+            window.open('https://wa.me/?text=' + encodeURIComponent(shareText + ' ' + shareUrl), '_blank', 'noopener');
         }
     });
     copyButton.addEventListener('click', function () {
@@ -335,7 +421,7 @@
             window.setTimeout(function () { status.textContent = ''; }, 3000);
         }
         if (navigator.clipboard && navigator.clipboard.writeText) {
-            navigator.clipboard.writeText(location.href).then(announce).catch(function () {
+            navigator.clipboard.writeText(window.weddingI18n ? window.weddingI18n.shareUrl() : location.href).then(announce).catch(function () {
                 status.textContent = 'Could not copy the link automatically.';
             });
         } else {
