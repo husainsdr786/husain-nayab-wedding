@@ -15,7 +15,8 @@
         if (window.scrollY !== 0 || document.documentElement.scrollTop !== 0) {
             window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
         }
-        openButton.focus({ preventScroll: true });
+        gate.setAttribute('tabindex', '-1');
+        gate.focus({ preventScroll: true });
     }
     resetGate();
     // Bfcache (back/forward cache) can restore the page exactly as it was left,
@@ -60,6 +61,7 @@
                 document.body.classList.remove('gate-locked');
                 document.documentElement.classList.remove('gate-locked');
                 content.focus({ preventScroll: true });
+                window.dispatchEvent(new Event('invitation-opened'));
             }, reducedMotion ? 0 : 850);
         }, reducedMotion ? 0 : 1300);
     }
@@ -247,15 +249,22 @@
     var links = Array.from(document.querySelectorAll('.site-nav a'));
     function updateNavigation() {
         var selected = links[0];
-        links.forEach(function (link) {
-            if (document.querySelector(link.getAttribute('href')).getBoundingClientRect().top < window.innerHeight * .45) selected = link;
-        });
+        // Hidden sections have zero-sized rectangles while the gate is closed.
+        // Keep Home selected until the invitation is visible and scrolled.
+        if (!document.documentElement.classList.contains('gate-locked') && window.scrollY > 10) {
+            links.forEach(function (link) {
+                var section = document.querySelector(link.getAttribute('href'));
+                if (section && section.getClientRects().length && section.getBoundingClientRect().top < window.innerHeight * .45) selected = link;
+            });
+        }
         links.forEach(function (link) {
             link.classList.toggle('active', link === selected);
             if (link === selected) link.setAttribute('aria-current', 'location'); else link.removeAttribute('aria-current');
         });
     }
     window.addEventListener('scroll', updateNavigation, {passive:true});
+    window.addEventListener('invitation-opened', updateNavigation);
+    window.addEventListener('pageshow', updateNavigation);
     updateNavigation();
 })();
 
@@ -271,13 +280,39 @@
         other.classList.remove('is-selected');
         other.setAttribute('aria-pressed', 'false');
         status.textContent = message;
+        [selected, other, status].forEach(function (element) {
+            element.classList.remove('rsvp-animate');
+        });
+        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches &&
+            !document.documentElement.classList.contains('paused') &&
+            !document.body.classList.contains('paused')) {
+            // Restart on every click, including repeated selection of one option.
+            void selected.offsetWidth;
+            selected.classList.add('rsvp-animate');
+            status.classList.add('rsvp-animate');
+        }
     }
+    [yesButton, noButton, status].forEach(function (element) {
+        element.addEventListener('animationend', function (event) {
+            if (event.target === element && !event.pseudoElement) element.classList.remove('rsvp-animate');
+        });
+    });
     yesButton.addEventListener('click', function () {
         respond(yesButton, noButton, "Thank you! We can't wait to celebrate with you.");
     });
     noButton.addEventListener('click', function () {
-        respond(noButton, yesButton, "Thank you for letting us know. You'll be missed!");
+        respond(noButton, yesButton, "You’ll be missed. Your love and blessings mean so much to us.");
     });
+    function resetResponse() {
+        [yesButton, noButton].forEach(function (button) {
+            button.classList.remove('is-selected', 'rsvp-animate');
+            button.setAttribute('aria-pressed', 'false');
+        });
+        status.textContent = '';
+    }
+    resetResponse();
+    window.addEventListener('pageshow', resetResponse);
+
 })();
 
 (function () {

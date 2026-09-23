@@ -515,17 +515,17 @@ blockquote cite{display:block;font-style:normal;margin-top:14px;color:var(--acce
 .site-footer::before { content: ''; position: absolute; inset: 20px 14px 12px; border: 1px solid var(--accent); border-radius: 160px 160px 24px 24px; pointer-events: none; opacity: .9; box-shadow: 0 0 18px color-mix(in srgb, var(--accent) 15%, transparent), inset 0 0 12px color-mix(in srgb, var(--accent) 8%, transparent); }
 .footer-ornament { display: flex; align-items: center; justify-content: center; gap: 16px; font-size: 32px; color: var(--accent); margin-bottom: 16px; }
 .footer-ornament span { height: 1px; width: 48px; background: var(--line); }
-.site-footer .footer-eyebrow { font-size: 9px; text-transform: uppercase; letter-spacing: .16em; line-height: 1.8; }
-.site-footer .footer-names { font-size: clamp(14px, 4.3vw, 22px); margin: 18px 0 12px; }
-.site-footer .footer-message { font-size: 13px; line-height: 1.8; letter-spacing: 0; max-width: 280px; margin: 0 auto 24px; }
+.site-footer .footer-eyebrow { font-size: 11px; text-transform: uppercase; letter-spacing: .16em; line-height: 1.8; }
+.site-footer .footer-names { font-size: clamp(22px, 6.7vw, 28px); line-height: 1.5; letter-spacing: 0; margin: 18px 0 12px; }
+.site-footer .footer-message { font-size: 15px; line-height: 1.8; letter-spacing: 0; max-width: 280px; margin: 0 auto 24px; }
 .site-footer .social-links { gap: 14px; margin: 0 0 26px; }
 .site-footer .social-links a { width: 44px; height: 44px; border-color: var(--accent-soft); color: var(--accent); box-shadow: var(--shadow-sm); transition: transform .2s, background .2s; }
 .site-footer .social-links a:hover { transform: translateY(-3px); background: var(--accent-soft); }
 .footer-fine-print { border-top: 1px solid var(--line); padding-top: 20px; max-width: 360px; margin: auto; }
-.site-footer .footer-fine-print p { font-size: 10px; line-height: 1.8; letter-spacing: .02em; }
+.site-footer .footer-fine-print p { font-size: 13px; line-height: 1.8; letter-spacing: .02em; }
 .site-footer .credit span { color: var(--accent); font-size: 16px; vertical-align: middle; }
 .site-footer .credit a { color: var(--ink); border-bottom: 1px solid var(--accent); }
-.footer-top { display: inline-flex; align-items: center; gap: 10px; font-size: 10px; letter-spacing: .06em; color: var(--muted); margin-top: 22px; padding: 10px; }
+.footer-top { display: inline-flex; align-items: center; gap: 10px; font-size: 13px; letter-spacing: .04em; color: var(--muted); margin-top: 22px; padding: 10px; }
 .footer-top span { color: var(--accent); font-size: 18px; }
 @media (min-width: 600px) and (max-width: 1199px) { .site-footer { padding-bottom: 36px; } }
 
@@ -582,16 +582,16 @@ blockquote cite{display:block;font-style:normal;margin-top:14px;color:var(--acce
 .hero-dedication { font-size: 13px; color: var(--muted); line-height: 1.7; margin: -4px 0 18px; }
 .hero-content .hero-date { font-size: 15px; }
 .footer-date-seal { display: flex; align-items: center; justify-content: center; gap: 15px; color: var(--muted); margin: 20px 0; }
-.footer-date-seal span { font-size: 10px; text-transform: uppercase; letter-spacing: .1em; }
+.footer-date-seal span { font-size: 12px; text-transform: uppercase; letter-spacing: .1em; }
 .footer-date-seal strong { display: grid; place-items: center; width: 48px; height: 54px; border: 1px solid var(--line); border-radius: 24px 24px 6px 6px; font: 26px Georgia, serif; color: var(--accent); }
 .footer-links { display: flex; flex-wrap: wrap; gap: 9px; align-items: center; justify-content: center; margin: 0 0 22px; }
-.footer-links a { font-size: 11px; color: var(--ink); padding: 8px 0; }
+.footer-links a { font-size: 13px; color: var(--ink); padding: 8px 0; }
 .footer-links a:hover { color: var(--accent); text-decoration: underline; text-underline-offset: 4px; }
 .footer-links > span { font-size: 7px; color: var(--accent); }
 @media (max-width: 380px) {
  .hero-content .hero-kicker { font-size: 8px; gap: 8px; letter-spacing: .1em; }
  .footer-links { gap: 7px; }
- .footer-links a { font-size: 10px; }
+ .footer-links a { font-size: 12px; }
 }
 
 /* Hearts and stars escape the card without intercepting taps or scrolling. */
@@ -617,3 +617,337 @@ blockquote cite{display:block;font-style:normal;margin-top:14px;color:var(--acce
 .name-celebration-particle.burst-heart { font-size: 38px; color: #bb4167 !important; }
 .dark .name-celebration-particle.burst-heart { color: #ff9fbe !important; }
 @media(prefers-reduced-motion:reduce) { .opening-heart { animation: none; } }
+
+/* Keep all six invitation shortcuts readable in the narrow navigation. */
+.site-nav a { min-width: 0; text-align: center; justify-content: center; line-height: 1.3; }
+#venue { scroll-margin-top: 90px; }
+@media (max-width: 599px), (min-width: 1200px) {
+ .site-nav a { flex-basis: 0; font-size: 10px; padding-inline: 2px; }
+}
+
+/* Quiet, coordinated finishing details across the invitation. */
+.event-block, .dress-code {
+ border: 1px solid color-mix(in srgb, var(--accent) 22%, var(--line));
+ background: linear-gradient(145deg, var(--paper), color-mix(in srgb, var(--accent) 4%, var(--paper)));
+ box-shadow: 0 10px 26px -20px var(--accent);
+}
+.venue-info { border-color: color-mix(in srgb, var(--accent) 32%, var(--line)); }
+.venue-info .address { line-height: 1.65; }
+.pill { transition: background-color .2s ease, border-color .2s ease, color .2s ease, box-shadow .2s ease, transform .2s ease; }
+.pill:focus-visible, .site-nav a:focus-visible, .footer-links a:focus-visible {
+ outline: 2px solid var(--accent); outline-offset: 4px;
+}
+#gate-open:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+@media (hover: hover) {
+ .pill:hover { border-color: var(--accent); background: var(--accent-soft); transform: translateY(-2px); box-shadow: 0 8px 20px -12px var(--accent); }
+}
+.pill:active { transform: translateY(0); }
+.site-nav {
+ display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 3px;
+ box-shadow: 0 -8px 28px -22px var(--accent);
+}
+.site-nav a {
+ flex-direction: column; gap: 5px; font-size: 10px; padding: 8px 2px;
+ border-radius: 12px; transition: color .2s ease, background-color .2s ease;
+}
+.site-nav a.active { background: var(--accent-soft); color: var(--ink); }
+.site-nav a.active span { color: var(--accent); }
+.site-nav a.active::after { bottom: 3px; width: 14px; height: 2px; }
+.site-nav a span { font-size: 20px; }
+@media (min-width: 600px) and (max-width: 1199px) {
+ .site-nav { padding: 8px; box-shadow: var(--shadow-sm); }
+ .site-nav a { font-size: 11px; }
+}
+@media (prefers-reduced-motion: reduce) {
+ .pill, .site-nav a { transition: none; }
+ .pill:hover { transform: none; }
+}
+
+/* Time-of-day details and a softly framed navigation dock. */
+.event-period { display: inline-flex; align-items: center; gap: 7px; padding: 6px 11px; margin-bottom: 16px; border: 1px solid currentColor; border-radius: 999px; font-size: 10px; letter-spacing: .04em; text-transform: uppercase; }
+.event-period svg { width: 18px; height: 18px; flex-shrink: 0; }
+.event-period.evening, .event-period.morning {
+ color: var(--accent);
+ background: color-mix(in srgb, var(--accent) 8%, var(--paper));
+ border-color: color-mix(in srgb, var(--accent) 45%, var(--line));
+}
+.event-period svg { transform-origin: center; }
+.event-period.evening svg { animation: event-moon-sway 4s ease-in-out infinite; }
+.event-period.morning svg { animation: event-sun-turn 20s linear infinite; }
+.event-period.evening svg path:last-child { transform-box: fill-box; transform-origin: center; animation: event-star-twinkle 2.8s ease-in-out infinite; }
+.event-period.morning svg circle { transform-box: fill-box; transform-origin: center; animation: event-sun-pulse 3s ease-in-out infinite; }
+@keyframes event-star-twinkle { 0%, 100% { opacity: .6; transform: scale(.8); } 50% { opacity: 1; transform: scale(1.12); } }
+@keyframes event-sun-pulse { 0%, 100% { transform: scale(.92); } 50% { transform: scale(1.1); } }
+@keyframes event-moon-sway {
+ 0%, 100% { transform: rotate(-10deg) translateY(0); }
+ 50% { transform: rotate(10deg) translateY(-2px); }
+}
+@keyframes event-sun-turn { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .event-period svg, .event-period svg * { animation: none !important; } }
+.event-block .event-time { display: inline-block; font-size: 20px; font-weight: 600; font-variant-numeric: tabular-nums; letter-spacing: .04em; color: var(--ink); padding-top: 12px; margin-top: 12px; border-top: 1px solid var(--line); }
+.site-nav { border: 1px solid color-mix(in srgb, var(--accent) 38%, var(--line)); border-bottom: 0; border-radius: 22px 22px 0 0; background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 5%, var(--paper)), var(--paper)); box-shadow: 0 -8px 32px -18px color-mix(in srgb, var(--accent) 40%, transparent); padding-top: 10px; }
+.site-nav a { gap: 6px; font-weight: 500; }
+.site-nav a > span { width: 32px; height: 30px; align-items: center; justify-content: center; border-radius: 11px; transition: transform .2s ease, background .2s ease, box-shadow .2s ease; }
+.site-nav a.active { background: transparent; }
+.site-nav a.active > span { background: var(--accent-soft); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 30%, transparent), 0 4px 12px -7px var(--accent); transform: translateY(-3px); }
+.site-nav a.active::after { background: var(--accent); width: 5px; height: 3px; border-radius: 50%; }
+@media (hover: hover) { .site-nav a:hover > span { background: var(--accent-soft); transform: translateY(-3px); } }
+@media (min-width: 600px) and (max-width: 1199px) { .site-nav { border-bottom: 1px solid var(--line); border-radius: 0 0 22px 22px; } }
+@media (prefers-reduced-motion: reduce) { .site-nav a > span { transition: none; } }
+
+/* Distinct evening and sunrise emblems. */
+.event-period { gap: 9px; padding: 9px 14px; font-size: 11px; letter-spacing: .05em; }
+.event-period svg { width: 26px; height: 26px; }
+.event-period.evening { border-radius: 18px 6px 18px 6px; background: linear-gradient(135deg, var(--accent-soft), var(--paper)); }
+.event-period.morning { border-radius: 6px 18px 6px 18px; background: linear-gradient(225deg, var(--accent-soft), var(--paper)); }
+.event-period.evening svg path:last-child { animation: none; }
+.event-stars { transform-box: fill-box; transform-origin: center; animation: event-star-twinkle 2.8s ease-in-out infinite; }
+.event-period.morning svg { animation: none; }
+.event-sunrise { animation: event-sunrise-rise 3.5s ease-in-out infinite; }
+@keyframes event-sunrise-rise { 0%, 100% { transform: translateY(1px); opacity: .75; } 50% { transform: translateY(-1.5px); opacity: 1; } }
+
+/* Keep interaction text readable across all accent palettes and both modes. */
+.pill:hover, .pill:focus-visible,
+.stack-arrow:hover, .stack-arrow:focus-visible {
+ color: var(--ink);
+ background: var(--accent-soft);
+ border-color: var(--accent);
+}
+.site-nav a:hover, .site-nav a:focus-visible,
+.footer-links a:hover, .footer-links a:focus-visible,
+.social-links a:hover, .social-links a:focus-visible,
+.site-footer .social-links a:hover, .site-footer .social-links a:focus-visible {
+ color: var(--ink);
+}
+.site-nav a:hover > span, .site-nav a:focus-visible > span { color: var(--ink); }
+
+/* Initial dialog focus should not outline the opening button. */
+#wedding-gate:focus { outline: none; }
+
+/* Gallery frames share the invitation's paper, accent and soft detailing. */
+.gallery-card {
+ background: radial-gradient(ellipse at top, var(--accent-soft), transparent 55%), var(--paper);
+ border-color: color-mix(in srgb, var(--accent) 45%, var(--line));
+ padding: 32px 22px 26px;
+ box-shadow: var(--shadow-sm);
+}
+.gallery-card::before { left: 25%; right: 25%; height: 1px; background: var(--accent); }
+.gallery-card h2 { color: var(--accent); margin-bottom: 30px; }
+.stack { width: min(260px, calc(100% - 20px)); height: auto; aspect-ratio: 4 / 5; }
+.stack-card { border: 5px solid var(--paper); outline: 1px solid color-mix(in srgb, var(--accent) 40%, var(--line)); box-shadow: var(--shadow); }
+.stack-card img[hidden] { display: none; }
+.stack-arrow { width: 36px; height: 36px; opacity: 1; border-color: var(--accent); }
+.stack-arrow svg { width: 16px; height: 16px; }
+.stack-photo-dots { padding: 7px 10px; border-radius: 999px; background: var(--paper); border: 1px solid var(--line); box-shadow: var(--shadow-sm); }
+.stack-photo-dots button { background: var(--line); border-color: var(--muted); width: 8px; height: 8px; }
+.stack-photo-dots button.active { background: var(--accent); border-color: var(--accent); }
+.stack-list { gap: 8px; }
+.stack-item { border: 1px solid var(--line); border-radius: 14px; gap: 12px; padding: 12px 14px; background: var(--paper); }
+.stack-label { font-size: 15px; color: var(--ink); }
+.stack-num { width: 26px; height: 26px; display: grid; place-items: center; border-radius: 50%; background: var(--soft); font-size: 10px; }
+.stack-item.active { border-color: var(--accent); background: var(--accent-soft); box-shadow: var(--shadow-sm); }
+.stack-item.active .stack-num { color: var(--ink); background: var(--paper); }
+.gallery-note { line-height: 1.7; max-width: 280px; margin: 24px auto 0; }
+@media (min-width: 600px) and (max-width: 1199px) {
+ .stack-gallery { gap: 32px; }
+ .stack { width: 46%; max-width: 300px; }
+ .stack-list { width: 42%; }
+}
+@media (min-width: 1200px) {
+ .stack-gallery { flex-direction: column; gap: 28px; }
+ .stack { width: min(280px, calc(100% - 20px)); }
+ .stack-list { max-width: 300px; }
+}
+@media (prefers-reduced-motion: reduce) { .stack-card, .stack-arrow, .stack-photo-dots button, .stack-item { transition: none; } }
+
+.map-venue-caption { position: absolute; left: 10px; right: 10px; bottom: 26px; z-index: 2; padding: 9px 12px; border: 1px solid var(--line); border-radius: 12px; background: var(--paper); color: var(--ink); font-size: 12px; line-height: 1.5; text-align: center; pointer-events: none; box-shadow: var(--shadow-sm); }
+
+/* A gently animated venue label, with the map remaining interactive. */
+.map-venue-caption { display: flex; align-items: center; justify-content: center; gap: 8px; overflow: hidden; animation: venue-label-float 5s ease-in-out infinite; }
+.map-venue-caption > span { position: relative; z-index: 1; }
+.map-venue-caption::before { content: ''; position: absolute; inset: 0; border-radius: inherit; box-shadow: inset 0 0 0 1px var(--accent); opacity: .25; animation: venue-label-glow 5s ease-in-out infinite; pointer-events: none; }
+.map-caption-pin { display: inline-block; flex-shrink: 0; color: var(--accent); font-size: 18px; line-height: 1; animation: venue-pin-pulse 2.8s ease-in-out infinite; }
+@keyframes venue-label-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
+@keyframes venue-label-glow { 0%, 100% { opacity: .25; } 50% { opacity: .8; } }
+@keyframes venue-pin-pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.18); } }
+@media (prefers-reduced-motion: reduce) { .map-venue-caption, .map-venue-caption::before, .map-caption-pin { animation: none !important; } }
+
+/* More visible venue motion while keeping its name steady and readable. */
+.map-venue-caption { isolation: isolate; animation-duration: 3.8s; }
+.map-venue-caption::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: linear-gradient(90deg, transparent 0%, var(--accent) 45%, var(--accent) 55%, transparent 100%); transform: translateX(-100%); animation: venue-border-shine 3.4s ease-in-out infinite; pointer-events: none; }
+.map-caption-pin { width: 24px; height: 24px; display: inline-grid; place-items: center; border-radius: 50%; background: var(--accent-soft); }
+.map-caption-pin::before, .map-caption-pin::after { content: ''; position: absolute; inset: 2px; border: 1px solid var(--accent); border-radius: 50%; pointer-events: none; animation: venue-pin-ripple 2.6s ease-out infinite; }
+.map-caption-pin::after { animation-delay: 1.3s; }
+@keyframes venue-border-shine { 0%, 10% { transform: translateX(-100%); opacity: 0; } 20%, 80% { opacity: 1; } 90%, 100% { transform: translateX(100%); opacity: 0; } }
+@keyframes venue-pin-ripple { 0% { transform: scale(.7); opacity: .7; } 100% { transform: scale(1.8); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) {
+ .map-venue-caption::after, .map-caption-pin::before, .map-caption-pin::after { animation: none !important; opacity: 0; }
+}
+
+/* Keep the pin beside the venue, precisely centered within its pulse ring. */
+.map-venue-caption { flex-direction: row; gap: 8px; padding: 9px 12px; }
+.map-caption-pin { margin: 0; }
+.map-caption-pin svg { display: block; width: 14px; height: 14px; }
+
+/* A polished navigation surface, retaining the fixed bottom alignment. */
+.site-nav {
+ gap: 4px;
+ background: linear-gradient(160deg, rgba(var(--paper-rgb), .98), rgba(var(--paper-rgb), .92));
+ backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+ border-color: color-mix(in srgb, var(--accent) 32%, var(--line));
+ box-shadow: 0 -10px 32px -22px var(--accent), inset 0 1px 0 color-mix(in srgb, var(--paper) 65%, transparent);
+}
+.site-nav a { padding: 9px 2px 12px; border: 1px solid transparent; border-radius: 16px; color: var(--muted); }
+.site-nav a > span { width: 34px; height: 32px; border-radius: 12px; }
+.site-nav a.active {
+ color: var(--ink);
+ background: linear-gradient(155deg, var(--accent-soft), color-mix(in srgb, var(--accent) 5%, var(--paper)));
+ border-color: color-mix(in srgb, var(--accent) 23%, var(--line));
+ box-shadow: 0 5px 12px -10px var(--accent);
+}
+.site-nav a.active > span {
+ color: var(--ink); background: var(--paper);
+ box-shadow: 0 4px 10px -6px var(--accent), inset 0 0 0 1px color-mix(in srgb, var(--accent) 35%, var(--line));
+ transform: translateY(-2px);
+}
+.site-nav a.active::after { bottom: 4px; width: 16px; height: 2px; border-radius: 2px; }
+@media (hover: hover) {
+ .site-nav a:hover { color: var(--ink); border-color: var(--line); background: color-mix(in srgb, var(--accent) 8%, var(--paper)); }
+}
+.site-nav a:active > span { transform: translateY(0) scale(.94); }
+@media (max-width: 359px) {
+ .site-nav { gap: 2px; }
+ .site-nav a { font-size: 9px; }
+ .site-nav a > span { width: 30px; height: 30px; }
+}
+
+/* Floating capsule navigation: one continuous dock with circular icons. */
+.site-nav {
+ left: 10px; right: 10px; bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+ top: auto; width: auto; transform: none;
+ padding: 10px 6px 8px; gap: 2px;
+ border: 1px solid color-mix(in srgb, var(--accent) 45%, var(--line));
+ border-radius: 30px;
+ background: var(--paper);
+ box-shadow: 0 12px 36px -16px rgba(0,0,0,.35), 0 2px 12px -8px var(--accent);
+}
+.site-nav a { padding: 3px 1px 8px; border: 0; border-radius: 20px; gap: 7px; font-size: 10px; background: transparent; box-shadow: none; }
+.site-nav a > span { width: 34px; height: 34px; border-radius: 50%; background: var(--soft); border: 1px solid var(--line); color: var(--ink); }
+.site-nav a.active { background: transparent; border: 0; box-shadow: none; color: var(--ink); font-weight: 700; }
+.site-nav a.active > span { background: var(--accent-soft); border-color: var(--accent); color: var(--ink); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 12%, transparent); transform: translateY(-2px); }
+.site-nav a.active::after { width: 4px; height: 4px; border-radius: 50%; bottom: 0; }
+@media (hover: hover) { .site-nav a:hover { background: transparent; } .site-nav a:hover > span { border-color: var(--accent); background: var(--accent-soft); } }
+@media (min-width: 600px) and (max-width: 1199px) {
+ .site-nav { left: 50%; right: auto; width: min(620px, calc(100% - 32px)); transform: translateX(-50%); }
+ .site-footer { padding-bottom: 140px; }
+ .corner-bl, .corner-br { bottom: calc(var(--mobile-nav-height, 90px) + 22px + env(safe-area-inset-bottom, 0px)); }
+ .corner-bl.corner-flower-sm, .corner-br.corner-flower-sm { bottom: calc(var(--mobile-nav-height, 90px) + 110px + env(safe-area-inset-bottom, 0px)); }
+}
+@media (min-width: 1200px) { .site-nav { right: auto; width: calc(35% - 20px); } }
+@media (max-width: 599px) {
+ html:not(.gate-locked) .corner-bl, html:not(.gate-locked) .corner-br { bottom: calc(var(--mobile-nav-height, 90px) + 22px + env(safe-area-inset-bottom, 0px)); }
+ html:not(.gate-locked) .corner-bl.corner-flower-sm, html:not(.gate-locked) .corner-br.corner-flower-sm { bottom: calc(var(--mobile-nav-height, 90px) + 66px + env(safe-area-inset-bottom, 0px)); }
+}
+@media (max-width: 359px) { .site-nav a { font-size: 9px; } .site-nav a > span { width: 30px; height: 30px; } }
+
+/* RSVP as a personal invitation card. */
+.rsvp-card { position: relative; padding: 36px 20px 26px; border: 1px solid var(--accent); border-radius: 36px 36px 22px 22px; background: radial-gradient(ellipse at top, var(--accent-soft), transparent 65%), var(--paper); box-shadow: var(--shadow-sm); }
+.rsvp-seal { display: grid; place-items: center; width: 52px; height: 52px; margin: 0 auto 18px; border: 1px solid var(--accent); border-radius: 50%; font-size: 32px; color: var(--accent); background: var(--paper); }
+.rsvp-eyebrow { font-size: 9px; text-transform: uppercase; letter-spacing: .15em; color: var(--muted); margin-bottom: 14px; }
+.rsvp-card h2 { color: var(--accent); }
+.rsvp-intro { max-width: 290px; margin: 16px auto; font-size: 15px; line-height: 1.7; color: var(--muted); }
+.rsvp-details { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; font-size: 12px; color: var(--ink); margin: 22px 0; }
+.rsvp-details span:nth-child(2) { color: var(--accent); }
+.rsvp-buttons { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.rsvp-buttons .rsvp-choice { flex-direction: column; gap: 8px; border: 1px solid var(--line); border-radius: 18px; padding: 18px 8px; white-space: normal; letter-spacing: 0; }
+.rsvp-choice-icon { font-size: 26px; color: var(--accent); line-height: 1; }
+.rsvp-choice strong { font-size: 13px; font-weight: 600; }
+.rsvp-choice small { font-size: 11px; color: var(--muted); }
+.rsvp-buttons .pill.is-selected { color: var(--ink); background: var(--accent-soft); border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+.rsvp-card #rsvp-status { color: var(--ink); font-size: 14px; line-height: 1.7; padding: 14px; border-radius: 14px; background: var(--accent-soft); }
+.rsvp-note { margin: 20px auto 0; max-width: 300px; font-size: 11px; line-height: 1.6; color: var(--muted); }
+
+
+/* A keepsake event pass with a perforated date panel. */
+.rsvp-pass { padding: 0 24px 28px; border-radius: 24px; border: 1px solid var(--accent); background: var(--paper); box-shadow: 0 18px 40px -24px var(--accent); }
+.rsvp-pass-header { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 18px 0; border-bottom: 1px solid var(--line); color: var(--muted); font-size: 9px; letter-spacing: .14em; }
+.rsvp-pass-header span:last-child { font-family: var(--script); font-size: 22px; letter-spacing: 0; color: var(--accent); }
+.rsvp-pass-header span:nth-child(2) { color: var(--accent); }
+.rsvp-pass .rsvp-eyebrow { margin: 28px 0 14px; font-size: 9px; letter-spacing: .1em; }
+.rsvp-pass .rsvp-intro { font-size: 14px; }
+.rsvp-pass-date { position: relative; display: grid; grid-template-columns: 1fr 1.4fr; margin: 26px -24px; padding: 22px 24px; gap: 20px; background: var(--accent-soft); border-top: 1px dashed var(--accent); border-bottom: 1px dashed var(--accent); }
+.rsvp-pass-date::before, .rsvp-pass-date::after { content: ''; position: absolute; top: -8px; width: 14px; height: 14px; border: 1px solid var(--accent); border-radius: 50%; background: var(--soft); }
+.rsvp-pass-date::before { left: -8px; }
+.rsvp-pass-date::after { right: -8px; }
+.rsvp-pass-date > div { display: flex; flex-direction: column; justify-content: center; gap: 7px; }
+.rsvp-pass-date > div:first-child { border-right: 1px solid color-mix(in srgb, var(--accent) 35%, transparent); padding-right: 20px; }
+.rsvp-pass-date span { font-size: 11px; color: var(--ink); letter-spacing: .03em; }
+.rsvp-pass-date strong { font-size: 23px; font-weight: 500; color: var(--ink); }
+.rsvp-pass-date > div:first-child strong { font: 44px/1 Georgia, serif; color: var(--ink); }
+.rsvp-pass-date .rsvp-pass-month { text-transform: uppercase; font-size: 10px; letter-spacing: .12em; }
+.rsvp-pass .rsvp-buttons { grid-template-columns: 1fr; gap: 10px; }
+.rsvp-pass .rsvp-choice { display: grid; grid-template-columns: 30px 1fr; grid-template-rows: auto auto; column-gap: 12px; row-gap: 4px; text-align: left; padding: 14px 16px; border-radius: 14px; }
+.rsvp-pass .rsvp-choice-icon { grid-row: 1 / 3; align-self: center; text-align: center; }
+.rsvp-pass .rsvp-choice strong, .rsvp-pass .rsvp-choice small { grid-column: 2; }
+
+/* Keep the RSVP focused on the response, without repeating event details. */
+.rsvp-pass .rsvp-buttons { margin-top: 26px; }
+.rsvp-pass .rsvp-choice-icon { display: grid; place-items: center; width: 30px; height: 30px; border: 1px solid var(--line); border-radius: 50%; background: var(--soft); font-size: 18px; }
+.rsvp-choice-icon svg { width: 18px; height: 18px; }
+.rsvp-pass .is-selected .rsvp-choice-icon { border-color: var(--accent); background: var(--paper); color: var(--ink); }
+
+/* Two compact response chips; neither is preferred before selection. */
+.rsvp-pass .rsvp-buttons { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.rsvp-pass .rsvp-choice { display: flex; flex-direction: column; text-align: center; padding: 20px 8px 16px; gap: 10px; border-radius: 28px 28px 12px 12px; border: 1px solid var(--line); background: var(--paper); box-shadow: none; }
+.rsvp-pass .rsvp-choice-icon { width: 38px; height: 38px; margin: 0 auto; border-radius: 12px; background: var(--soft); }
+.rsvp-pass .rsvp-choice strong { font-size: 12px; line-height: 1.4; }
+.rsvp-pass .rsvp-choice small { font-size: 10px; line-height: 1.5; }
+.rsvp-pass .rsvp-choice.is-selected { border-color: var(--accent); background: var(--accent-soft); box-shadow: inset 0 -3px 0 var(--accent); }
+@media (hover: hover) { .rsvp-pass .rsvp-choice:hover { color: var(--ink); border-color: var(--accent); background: var(--accent-soft); } }
+
+/* Centered RSVP controls with a compact, polished pill treatment. */
+.rsvp-pass .rsvp-buttons {
+ display: flex;
+ flex-wrap: wrap;
+ justify-content: center;
+ align-items: stretch;
+ gap: 12px;
+ margin: 26px auto 0;
+ max-width: 340px;
+}
+.rsvp-pass .rsvp-choice {
+ flex: 0 1 148px;
+ min-width: 0;
+ padding: 16px 12px;
+ border-radius: 24px;
+ border: 1px solid color-mix(in srgb, var(--accent) 35%, var(--line));
+ background: linear-gradient(150deg, var(--paper), color-mix(in srgb, var(--accent) 4%, var(--paper)));
+ box-shadow: 0 6px 16px -12px var(--accent);
+ gap: 8px;
+}
+.rsvp-pass .rsvp-choice-icon {
+ width: 34px;
+ height: 34px;
+ border-radius: 50%;
+ background: var(--accent-soft);
+ border-color: color-mix(in srgb, var(--accent) 30%, var(--line));
+ color: var(--ink);
+}
+.rsvp-pass .rsvp-choice strong { font-size: 13px; font-weight: 600; }
+.rsvp-pass .rsvp-choice small { font-size: 11px; }
+.rsvp-pass .rsvp-choice.is-selected {
+ background: var(--accent-soft);
+ border-color: var(--accent);
+ box-shadow: inset 0 0 0 1px var(--accent), 0 6px 18px -12px var(--accent);
+}
+
+/* RSVP feedback replays on every activation. */
+.rsvp-pass .rsvp-choice { position: relative; overflow: hidden; isolation: isolate; }
+.rsvp-pass .rsvp-choice > * { position: relative; z-index: 1; }
+.rsvp-choice.rsvp-animate { animation: rsvp-press-bounce .7s cubic-bezier(.2,.7,.3,1); }
+.rsvp-choice.rsvp-animate::after { content: ''; position: absolute; width: 150px; height: 150px; left: 50%; top: 50%; border-radius: 50%; background: var(--accent); pointer-events: none; z-index: 0; animation: rsvp-click-ripple .65s ease-out both; }
+#rsvp-status.rsvp-animate { animation: rsvp-message-in .5s ease-out both; }
+@keyframes rsvp-press-bounce { 0% { transform: scale(1); } 25% { transform: scale(.95); } 60% { transform: scale(1.025); } 100% { transform: scale(1); } }
+@keyframes rsvp-click-ripple { from { opacity: .22; transform: translate(-50%, -50%) scale(0); } to { opacity: 0; transform: translate(-50%, -50%) scale(2); } }
+@keyframes rsvp-message-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+@media (prefers-reduced-motion: reduce) { .rsvp-choice.rsvp-animate, .rsvp-choice.rsvp-animate::after, #rsvp-status.rsvp-animate { animation: none !important; } }
