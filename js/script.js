@@ -41,6 +41,10 @@
         fields.forEach(function (field, index) {
             field.textContent = String(values[index]).padStart(2, '0');
         });
+        // The desktop side panel carries a compact copy of the same countdown.
+        document.querySelectorAll('[data-count]').forEach(function (field) {
+            field.textContent = String(values[units.indexOf(field.dataset.count)]).padStart(2, '0');
+        });
         rings.forEach(function (ring, index) {
             if (!ring) return;
             var fraction = Math.min(1, values[index] / ringMax[units[index]]);
@@ -56,4 +60,66 @@
     document.addEventListener('visibilitychange', function () {
         if (!document.hidden) updateCountdown();
     });
+})();
+
+// Sticky header: show the "Wedding Invitation" bar once the hero's own chip and kicker have scrolled out of view.
+(function () {
+    var bar = document.querySelector('.invite-bar');
+    var kicker = document.querySelector('.hero .hero-kicker');
+    var column = document.querySelector('.invitation-column');
+    var nav = document.querySelector('.site-nav');
+    if (!bar || !kicker) return;
+    function update() {
+        // Tablet keeps the section nav at the top, so the bar tucks in below it.
+        var top = nav && getComputedStyle(nav).top === '0px' ? nav.getBoundingClientRect().bottom : 0;
+        var col = column.getBoundingClientRect();
+        bar.style.setProperty('--bar-top', top + 'px');
+        bar.style.setProperty('--bar-left', col.left + 'px');
+        bar.style.setProperty('--bar-width', col.width + 'px');
+        bar.classList.toggle('is-shown', kicker.getBoundingClientRect().bottom < top);
+        // In-page jumps land just below the bar.
+        document.documentElement.style.scrollPaddingTop = top + bar.offsetHeight + 12 + 'px';
+    }
+    window.addEventListener('scroll', update, {passive: true});
+    window.addEventListener('resize', update);
+    window.addEventListener('invitation-opened', update);
+    update();
+})();
+
+// Desktop side panel: mirrors the ceremony time, proxies the hero actions and switches its stage with the section in view.
+(function () {
+    var panel = document.querySelector('.visual-panel');
+    if (!panel) return;
+
+    // Ceremony time is localised on #ceremony-time; keep the panel copy in step with it.
+    var ceremony = document.getElementById('ceremony-time');
+    function syncTime() {
+        panel.querySelectorAll('[data-ceremony-time]').forEach(function (el) { el.textContent = ceremony.textContent; });
+    }
+    if (ceremony) {
+        syncTime();
+        new MutationObserver(syncTime).observe(ceremony, {childList: true, characterData: true, subtree: true});
+    }
+
+    // Calendar and Share reuse the hero buttons, so their links and share logic live in one place.
+    panel.querySelectorAll('[data-proxy]').forEach(function (button) {
+        button.addEventListener('click', function () {
+            var source = document.getElementById(button.dataset.proxy);
+            if (source) source.click();
+        });
+    });
+
+    // Dress Code and Venue raise a floating bar at the bottom of the panel; other sections show none.
+    var stage = panel.querySelector('.visual-stage');
+    if (!stage) return;
+    var paneFor = {'#dress-code': 'dress', '#venue': 'venue'};
+    function update() {
+        var active = document.querySelector('.site-nav a.active');
+        stage.dataset.pane = paneFor[active ? active.getAttribute('href') : ''] || 'none';
+    }
+    // The nav already tracks the section in view; follow its active link.
+    document.querySelectorAll('.site-nav a').forEach(function (link) {
+        new MutationObserver(update).observe(link, {attributes: true, attributeFilter: ['class']});
+    });
+    update();
 })();

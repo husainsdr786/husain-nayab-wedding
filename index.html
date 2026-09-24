@@ -58,8 +58,14 @@
   <h1 class="couple-name" id="gate-heading"><span class="name-pop name-husain">Athar Husain</span> <span class="name-amp">&amp;</span> <span class="name-pop name-nayab">Samar Nayab</span></h1>
   <button class="pill" id="gate-open" type="button"><svg class="invitation-envelope" aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M3 9 12 2l9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9Z" fill="currentColor"/><path d="m4 9 8 6 8-6M8 5h8v7l-4 3-4-3V5Z" stroke="var(--paper)" stroke-width="1.6" stroke-linejoin="round"/></svg> Open Invitation</button>
   <div class="gate-loader" aria-hidden="true">
-   <div class="loader-ring"></div>
+   <div class="loader-emblem">
+    <span class="loader-halo"></span>
+    <span class="loader-arc"></span>
+    <span class="loader-orbit"><i></i><i></i><i></i></span>
+    <span class="loader-mono">H<i>&amp;</i>N</span>
+   </div>
    <p class="loader-text">Preparing your invitation&hellip;</p>
+   <span class="loader-bar"><i></i></span>
   </div>
   <div class="theme-picker gate-prefs">
    <div class="prefs-head">
@@ -80,6 +86,10 @@
  </div>
  <div id="invitation-content" tabindex="-1">
   <main class="invitation-column">
+   <div class="hero-content invite-bar" aria-hidden="true">
+    <h2 class="script hero-title">Wedding Invitation</h2>
+    <p class="hero-kicker"><span>✦</span> You are warmly invited <span>✦</span></p>
+   </div>
    <section class="hero" id="home">
     <div class="hero-bg" aria-hidden="true">
      <div class="hero-wash"></div>
@@ -98,6 +108,21 @@
      </div>
      <p id="share-status" role="status"></p>
      <a class="scroll-link" href="#couple"><span class="mouse" aria-hidden="true"></span>Scroll Down</a>
+    </div>
+    <div class="hero-extra">
+     <div class="hero-seal-row" aria-hidden="true">
+      <span class="hero-seal-line"></span>
+      <div class="hero-seal">
+       <svg class="hero-seal-ring" viewBox="0 0 120 120"><defs><path id="hero-seal-path" d="M60 60m-47 0a47 47 0 1 1 94 0a47 47 0 1 1-94 0"/></defs><text><textPath href="#hero-seal-path" textLength="290">BARAKALLAH ✦ HUSAIN &amp; NAYAB ✦ IN SHAA ALLAH ✦</textPath></text></svg>
+       <span class="hero-seal-mono">H<i>&amp;</i>N</span>
+      </div>
+      <span class="hero-seal-line"></span>
+     </div>
+     <div class="hero-verse">
+      <p class="hero-verse-ar" lang="ar" dir="rtl">وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً</p>
+      <p class="hero-verse-text">"And He placed between you affection and mercy."</p>
+      <cite>Surah Ar-Rum 30:21</cite>
+     </div>
     </div>
    </section>
    <section class="couple-section wave reveal" id="couple">
@@ -125,7 +150,7 @@
     <blockquote class="hadith reveal"><p>"When a person marries, he has completed half of his faith; so let him fear Allah regarding the remaining half."</p><cite lang="ar" dir="rtl">رَوَاهُ الْبَيْهَقِيُّ</cite></blockquote>
    </section>
    <section class="event-section wave" id="countdown">
-    <h2 class="script reveal" id="countdown-heading">Happy Moment</h2>
+    <h2 class="script reveal" id="countdown-heading">The Celebration</h2>
     <div class="countdown" role="timer" aria-label="Time until our wedding">
      <div class="reveal">
       <div class="countdown-ring">
@@ -160,7 +185,23 @@
     <p class="event-blessing reveal">By asking for the grace and blessing of Allah Subhanahu Wa Ta'ala, God willing, we will hold an event:</p>
     <div class="event-block reveal"><span class="heart heart-right" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none"><path d="M24 41S5 28.5 5 16.5C5 5.5 18 3 24 12C30 3 43 5.5 43 16.5C43 28.5 24 41 24 41Z" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div class="event-period evening"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M16 18A8 8 0 0 1 9 4a8 8 0 1 0 7 14Z" fill="currentColor" opacity=".85"/><g class="event-stars" fill="currentColor"><path d="m17 2 1.1 3.4L21.5 6.5l-3.4 1.1L17 11l-1.1-3.4-3.4-1.1 3.4-1.1Z"/><circle cx="21" cy="14" r="1"/></g></svg><span>Evening celebration</span></div><h3 class="script">Wedding Ceremony</h3><p data-wedding-date-label>21 November 2026</p><p class="event-time" id="ceremony-time">9:00 PM IST</p></div>
     <div class="event-block reveal"><div class="event-period morning"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><g class="event-sunrise"><path d="M6 15a6 6 0 0 1 12 0" fill="currentColor" opacity=".75"/><path d="M12 3v3M3.5 7l2 2m15-2-2 2M2 13h2m16 0h2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></g><path d="M3 17h18M6 21h12" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg><span>Morning gathering</span></div><h3 class="script">Reception / Walima</h3><p data-walima-date>22 November 2026</p><p class="event-time" data-walima-time>11:00 AM IST</p></div>
-    <div class="dress-code reveal"><span class="heart heart-left" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none"><path d="M24 41S5 28.5 5 16.5C5 5.5 18 3 24 12C30 3 43 5.5 43 16.5C43 28.5 24 41 24 41Z" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p>We would love to see you dressed for a beautiful evening of celebration.</p><div class="swatches" aria-label="Suggested colors: ivory, sage and forest green"><span></span><span></span><span></span></div><p>Festive &amp; traditional attire</p></div>
+    <div class="dress-code reveal" id="dress-code">
+     <div class="dress-head">
+      <span class="dress-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M10.2 5.2A1.8 1.8 0 1 1 12 7v1.3M12 8.3 3.6 14.8a1.2 1.2 0 0 0 .7 2.2h15.4a1.2 1.2 0 0 0 .7-2.2L12 8.3Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <div><p class="dress-eyebrow">Dress Code</p><h3 class="script dress-title">Festive &amp; traditional attire</h3></div>
+     </div>
+     <p class="dress-note">We would love to see you dressed for a beautiful evening of celebration.</p>
+     <p class="dress-sub">Suggested colors</p>
+     <div class="dress-palette" role="list" aria-label="Suggested colors">
+      <span class="dress-swatch" role="listitem" style="--swatch:#f6efdf"><i aria-hidden="true"></i><small>Ivory</small></span>
+      <span class="dress-swatch" role="listitem" style="--swatch:#98dbc0"><i aria-hidden="true"></i><small>Sage</small></span>
+      <span class="dress-swatch" role="listitem" style="--swatch:#365d41"><i aria-hidden="true"></i><small>Forest green</small></span>
+     </div>
+     <div class="dress-tips">
+      <p class="dress-tip"><span class="dress-tip-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3.5 13.9 9l5.6 1.9-5.6 1.9L12 18.3l-1.9-5.5-5.6-1.9L10.1 9 12 3.5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M18.5 16.5l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7.7-1.8Z" fill="currentColor"/></svg></span><b>Modest &amp; graceful</b><span>Elegant outfits with modest cuts are appreciated.</span></p>
+      <p class="dress-tip"><span class="dress-tip-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M19 14.5A7.5 7.5 0 1 1 9.5 5a6 6 0 0 0 9.5 9.5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M17 4v3M15.5 5.5h3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span><b>Cool evening</b><span>Bring a shawl or light jacket for the November night.</span></p>
+     </div>
+    </div>
     <div class="venue-block reveal" id="venue">
      <div class="venue-info">
       <span class="venue-pin" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-5.2-7-11a7 7 0 0 1 14 0c0 5.8-7 11-7 11Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.6" stroke="currentColor" stroke-width="1.6"/></svg></span>
@@ -243,32 +284,92 @@
     <p class="footer-eyebrow">A celebration of love &amp; togetherness</p>
     <p class="footer-names couple-name"><span class="name-pop name-husain">Athar Husain</span> <span class="name-amp">&amp;</span> <span class="name-pop name-nayab">Samar Nayab</span></p>
     <p class="footer-message">Your presence makes our forever more beautiful.</p>
-    <div class="footer-date-seal"><span>November</span><strong>21</strong><span>2026</span></div>
-    <nav class="footer-links" aria-label="Footer invitation links"><a href="#couple">Our story</a><span aria-hidden="true">✦</span><a href="#countdown">The celebration</a><span aria-hidden="true">✦</span><a href="#gallery">Memories</a></nav>
-    <div class="social-links">
-     <a href="https://instagram.com/husainsdr786" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="1.8"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor"/></svg></a>
-     <a href="https://facebook.com/husainsdr786" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9.5" stroke="currentColor" stroke-width="1.8"/><path d="M13.8 8.6h1.5V6.2h-1.8c-1.7 0-2.8 1-2.8 2.8v1.6H9v2.4h1.7V18h2.4v-5h1.7l.4-2.4h-2.1V9.2c0-.4.2-.6.7-.6Z" fill="currentColor"/></svg></a>
+    <div class="footer-grid">
+     <nav class="footer-col footer-links" aria-label="Footer invitation links">
+      <p class="footer-col-title">Explore</p>
+      <a href="#couple">Our story</a>
+      <a href="#countdown">The celebration</a>
+      <a href="#dress-code">Dress Code</a>
+      <a href="#gallery">Memories</a>
+     </nav>
+     <div class="footer-col footer-connect">
+      <p class="footer-col-title">Connect</p>
+      <div class="social-links">
+       <a href="https://instagram.com/husainsdr786" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="1.8"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor"/></svg></a>
+       <a href="https://facebook.com/husainsdr786" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9.5" stroke="currentColor" stroke-width="1.8"/><path d="M13.8 8.6h1.5V6.2h-1.8c-1.7 0-2.8 1-2.8 2.8v1.6H9v2.4h1.7V18h2.4v-5h1.7l.4-2.4h-2.1V9.2c0-.4.2-.6.7-.6Z" fill="currentColor"/></svg></a>
+      </div>
+     </div>
     </div>
-    <div class="footer-fine-print"><p>&copy; 2026 Athar Husain &amp; Samar Nayab</p>
-    <p class="credit">Made with <span aria-label="love">♡</span> by <a href="https://github.com/husainsdr786" target="_blank" rel="noopener noreferrer">Husain</a></p></div>
-    <a class="footer-top" href="#home">Back to the beginning <span aria-hidden="true">↑</span></a>
+    <div class="footer-fine-print"><p>&copy; 2026 <strong class="couple-name-plain">Athar Husain</strong> &amp; <strong class="couple-name-plain">Samar Nayab</strong></p>
+    <p class="credit">Made with <span aria-label="love">♡</span> by <a href="https://github.com/husainsdr786" target="_blank" rel="noopener noreferrer">Husain</a></p>
+    <a class="footer-top" href="#home" aria-label="Back to the beginning" title="Back to the beginning"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 19V5M5.5 11.5 12 5l6.5 6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
    </div>
   </main>
-  <aside class="visual-panel" aria-hidden="true">
-   <div class="visual-orb orb-a"></div>
-   <div class="visual-orb orb-b"></div>
-   <div class="visual-orb orb-c"></div>
-   <div class="visual-ring"></div>
-   <div class="visual-sparkle s1"></div>
-   <div class="visual-sparkle s2"></div>
-   <div class="visual-sparkle s3"></div>
-   <div class="visual-sparkle s4"></div>
-   <div class="visual-card">
-    <p class="visual-card-eyebrow">The Wedding Of</p>
-    <p class="couple-name visual-card-names"><span class="name-pop name-husain">Athar Husain</span> <span class="name-amp">&amp;</span> <span class="name-pop name-nayab">Samar Nayab</span></p>
-    <div class="visual-card-divider" aria-hidden="true"><span></span>❦<span></span></div>
-    <p class="visual-card-date">Saturday, November 21 2026</p>
-    <p class="visual-card-blessing">Together, by the grace of Allah</p>
+  <aside class="visual-panel" aria-label="Invitation highlights">
+   <div class="visual-orb orb-a" aria-hidden="true"></div>
+   <div class="visual-orb orb-b" aria-hidden="true"></div>
+   <div class="visual-orb orb-c" aria-hidden="true"></div>
+   <div class="visual-ring" aria-hidden="true"></div>
+   <div class="visual-mehrab" aria-hidden="true">
+    <svg viewBox="0 0 560 700" fill="none">
+     <path class="mehrab-glow" d="M14 700V280a266 266 0 0 1 532 0v420Z"/>
+     <path class="mehrab-line mehrab-outer" d="M1 700V280a279 279 0 0 1 558 0v420" pathLength="1000"/>
+     <path class="mehrab-line mehrab-inner" d="M15 700V280a265 265 0 0 1 530 0v420" pathLength="1000"/>
+     <path class="mehrab-glint" d="M1 700V280a279 279 0 0 1 558 0v420" pathLength="1000"/>
+    </svg>
+    <span class="mehrab-star">✦</span>
+   </div>
+   <svg class="visual-defs" aria-hidden="true" width="0" height="0"><defs><radialGradient id="lantern-glow" cx="50%" cy="55%" r="60%"><stop offset="0" stop-color="#fff6d8" stop-opacity=".95"/><stop offset=".55" stop-color="#f3d27a" stop-opacity=".55"/><stop offset="1" stop-color="#f3d27a" stop-opacity=".08"/></radialGradient></defs></svg>
+   <div class="visual-lanterns" aria-hidden="true">
+    <span class="lantern l1"><svg viewBox="0 0 60 120" fill="none"><path d="M30 0v26" stroke="currentColor" stroke-width="1"/><circle cx="30" cy="29" r="3.2" stroke="currentColor" stroke-width="1.4"/><path d="M19 42h22l-4-9H23l-4 9Z" fill="currentColor" opacity=".9"/><path d="M17 42h26l5 16-5 30H17l-5-30 5-16Z" fill="url(#lantern-glow)" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M30 42v46M17 42l6 16-6 30M43 42l-6 16 6 30M12 58h36" stroke="currentColor" stroke-width=".9" opacity=".7"/><path d="M17 88h26l-5 8H22l-5-8Z" fill="currentColor" opacity=".9"/><path d="M30 96v12" stroke="currentColor" stroke-width="1.2"/><circle cx="30" cy="111" r="2.4" fill="currentColor"/></svg></span>
+    <span class="lantern l2"><svg viewBox="0 0 60 120" fill="none"><path d="M30 0v26" stroke="currentColor" stroke-width="1"/><circle cx="30" cy="29" r="3.2" stroke="currentColor" stroke-width="1.4"/><path d="M19 42h22l-4-9H23l-4 9Z" fill="currentColor" opacity=".9"/><path d="M17 42h26l5 16-5 30H17l-5-30 5-16Z" fill="url(#lantern-glow)" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M30 42v46M17 42l6 16-6 30M43 42l-6 16 6 30M12 58h36" stroke="currentColor" stroke-width=".9" opacity=".7"/><path d="M17 88h26l-5 8H22l-5-8Z" fill="currentColor" opacity=".9"/><path d="M30 96v12" stroke="currentColor" stroke-width="1.2"/><circle cx="30" cy="111" r="2.4" fill="currentColor"/></svg></span>
+    <span class="lantern l3"><svg viewBox="0 0 60 120" fill="none"><path d="M30 0v26" stroke="currentColor" stroke-width="1"/><circle cx="30" cy="29" r="3.2" stroke="currentColor" stroke-width="1.4"/><path d="M19 42h22l-4-9H23l-4 9Z" fill="currentColor" opacity=".9"/><path d="M17 42h26l5 16-5 30H17l-5-30 5-16Z" fill="url(#lantern-glow)" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M30 42v46M17 42l6 16-6 30M43 42l-6 16 6 30M12 58h36" stroke="currentColor" stroke-width=".9" opacity=".7"/><path d="M17 88h26l-5 8H22l-5-8Z" fill="currentColor" opacity=".9"/><path d="M30 96v12" stroke="currentColor" stroke-width="1.2"/><circle cx="30" cy="111" r="2.4" fill="currentColor"/></svg></span>
+   </div>
+   <div class="visual-sparkle s1" aria-hidden="true"></div>
+   <div class="visual-sparkle s2" aria-hidden="true"></div>
+   <div class="visual-sparkle s3" aria-hidden="true"></div>
+   <div class="visual-sparkle s4" aria-hidden="true"></div>
+   <div class="visual-layout">
+    <div class="visual-stage" data-pane="none">
+     <div class="stage-pane stage-dress">
+      <span class="stage-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M10.2 5.2A1.8 1.8 0 1 1 12 7v1.3M12 8.3 3.6 14.8a1.2 1.2 0 0 0 .7 2.2h15.4a1.2 1.2 0 0 0 .7-2.2L12 8.3Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <p class="stage-eyebrow">Dress Code</p>
+      <p class="script stage-title">Festive &amp; traditional attire</p>
+      <div class="stage-swatches">
+       <span style="--swatch:#f6efdf"><i aria-hidden="true"></i>Ivory</span>
+       <span style="--swatch:#98dbc0"><i aria-hidden="true"></i>Sage</span>
+       <span style="--swatch:#365d41"><i aria-hidden="true"></i>Forest green</span>
+      </div>
+     </div>
+     <div class="stage-pane stage-venue">
+      <span class="stage-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s-7-5.2-7-11a7 7 0 0 1 14 0c0 5.8-7 11-7 11Z" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.7"/></svg></span>
+      <p class="stage-eyebrow">Join us at</p>
+      <p class="script stage-title">Chaudhary Palace Hotel &amp; Marriage Hall</p>
+      <a class="stage-btn" href="https://www.google.com/maps/dir/?api=1&amp;destination=27.199951%2C83.18379&amp;travelmode=driving" target="_blank" rel="noopener noreferrer">Get Directions</a>
+     </div>
+    </div>
+    <div class="visual-card">
+     <p class="visual-card-eyebrow">The Wedding Of</p>
+     <p class="couple-name visual-card-names"><span class="name-pop name-husain">Athar Husain</span> <span class="name-amp">&amp;</span> <span class="name-pop name-nayab">Samar Nayab</span></p>
+     <div class="visual-card-divider" aria-hidden="true"><span></span>❦<span></span></div>
+     <p class="visual-card-date">Saturday, November 21 2026</p>
+     <div class="visual-countdown" role="timer" aria-label="Time until our wedding">
+      <span><b data-count="days">00</b><small>Days</small></span>
+      <span><b data-count="hours">00</b><small>Hours</small></span>
+      <span><b data-count="minutes">00</b><small>Min</small></span>
+      <span><b data-count="seconds">00</b><small>Sec</small></span>
+     </div>
+     <ol class="visual-timeline">
+      <li><i aria-hidden="true"></i><div><strong>Wedding Ceremony</strong><span><span data-wedding-date-label>21 November 2026</span> · <span data-ceremony-time>9:00 PM IST</span></span></div></li>
+      <li><i aria-hidden="true"></i><div><strong>Reception / Walima</strong><span><span data-walima-date>22 November 2026</span> · <span data-walima-time>11:00 AM IST</span></span></div></li>
+     </ol>
+     <div class="visual-actions">
+      <button type="button" data-proxy="add-calendar"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="5.5" width="16" height="15" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M4 9.5h16M8 3.5v3M16 3.5v3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg><span>Calendar</span></button>
+      <a href="https://www.google.com/maps/dir/?api=1&amp;destination=27.199951%2C83.18379&amp;travelmode=driving" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s-7-5.2-7-11a7 7 0 0 1 14 0c0 5.8-7 11-7 11Z" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.7"/></svg><span>Directions</span></a>
+      <button type="button" data-proxy="share-invite"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="18" cy="5.5" r="2.5" stroke="currentColor" stroke-width="1.7"/><circle cx="6" cy="12" r="2.5" stroke="currentColor" stroke-width="1.7"/><circle cx="18" cy="18.5" r="2.5" stroke="currentColor" stroke-width="1.7"/><path d="m8.2 10.8 7.6-4.1M8.2 13.2l7.6 4.1" stroke="currentColor" stroke-width="1.7"/></svg><span>Share</span></button>
+     </div>
+     <p class="visual-card-blessing">Together, by the grace of Allah</p>
+    </div>
    </div>
   </aside>
   <div class="utility-controls" id="utility-controls">
@@ -283,8 +384,9 @@
   <nav class="site-nav" aria-label="Invitation sections">
    <a href="#home" class="active"><span aria-hidden="true"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none"><path d="M4 11.5 12 4l8 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 10v9a1 1 0 0 0 1 1h4v-6h2v6h4a1 1 0 0 0 1-1v-9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Home</a>
    <a href="#couple"><span aria-hidden="true"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none"><circle cx="9" cy="14" r="5" stroke="currentColor" stroke-width="1.8"/><circle cx="15" cy="14" r="5" stroke="currentColor" stroke-width="1.8"/></svg></span>Couple</a>
-   <a href="#countdown"><span aria-hidden="true"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none"><rect x="4" y="5.5" width="16" height="15" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M4 9.5h16M8 3.5v3M16 3.5v3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>Happy Moment</a>
-   <a href="#venue"><span aria-hidden="true"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-5.2-7-11a7 7 0 0 1 14 0c0 5.8-7 11-7 11Z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.8"/></svg></span>Get Directions</a>
+   <a href="#countdown"><span aria-hidden="true"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none"><rect x="4" y="5.5" width="16" height="15" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M4 9.5h16M8 3.5v3M16 3.5v3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>Celebration</a>
+   <a href="#dress-code"><span aria-hidden="true"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none"><path d="M10.2 5.2A1.8 1.8 0 1 1 12 7v1.3M12 8.3 3.6 14.8a1.2 1.2 0 0 0 .7 2.2h15.4a1.2 1.2 0 0 0 .7-2.2L12 8.3Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Dress Code</a>
+   <a href="#venue"><span aria-hidden="true"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-5.2-7-11a7 7 0 0 1 14 0c0 5.8-7 11-7 11Z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.8"/></svg></span>Venue</a>
    <a href="#gallery"><span aria-hidden="true"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none"><rect x="4" y="5" width="16" height="14" rx="2" stroke="currentColor" stroke-width="1.8"/><circle cx="9" cy="10" r="1.4" stroke="currentColor" stroke-width="1.4"/><path d="m6 17 4-4 3 3 3-4 5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Gallery</a>
    <a href="#wishes"><span aria-hidden="true"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none"><path d="M12 20.5S2.5 14 2.5 8C2.5 2.5 9 1.5 12 6C15 1.5 21.5 2.5 21.5 8C21.5 14 12 20.5 12 20.5Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Memories</a>
   </nav>

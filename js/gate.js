@@ -318,7 +318,9 @@
     function smoothScrollTo(target) {
         var startY = window.scrollY;
         var offset = parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0;
-        var targetY = target.getBoundingClientRect().top + startY - offset;
+        // Ignore a not-yet-revealed section's slide-in offset, so the jump lands where the section settles.
+        var shift = new DOMMatrix(getComputedStyle(target).transform).m42 || 0;
+        var targetY = target.getBoundingClientRect().top - shift + startY - offset;
         var distance = targetY - startY;
         if (reduced.matches || Math.abs(distance) < 2) {
             window.scrollTo({ top: targetY, behavior: 'instant' });
